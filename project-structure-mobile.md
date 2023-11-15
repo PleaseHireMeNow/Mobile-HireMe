@@ -10,7 +10,7 @@
      icon.png
      splash.png
   components
-    Features
+    features
       Auth
          LoginForm.tsx
       Session
@@ -18,12 +18,12 @@
          QuestionList.tsx
       UserDashboard
          UserAvatar.tsx
-    Layout
+    layout
        Footer.tsx
        Header.tsx
        MainLayout.tsx
        SessionLayout.tsx
-    Ui
+    ui
       Buttons
          MainButton.tsx
          SecondaryButton.tsx
@@ -35,6 +35,16 @@
      LoginPage.tsx
      SessionPage.tsx
      UserDashboardPage.tsx
+  types
+    dtos
+       UserDto.ts
+    models
+       Question.ts
+       Session.ts
+       User.ts
+    requests
+       ErrorRequest.ts
+       Request.ts
    .gitignore
    app.json
    App.tsx
@@ -198,4 +208,25 @@ export default function SomeComponent() {
 }
 ```
 
+## Types 
+
+Types are split into 3 folders:
+1. `dtos` Stands for data transfer object, this might be a different object format then what we shape it into after requests.
+2. `models` Models our entities, for example a user or a question:
+```typescript
+interface User {
+    username: string;
+    email: string;
+    session: Session;
+    history: History;
+}
+
+interface Question {
+    question: string;
+    answer: string;
+    isReviewed: boolean;
+}
+```
+
 Finally global state needs to be decided on
+
