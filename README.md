@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [About](#about)
-- [Project Structure](#projectstructure)
+- [Project Structure](#project-structure)
 
 ## About
 
