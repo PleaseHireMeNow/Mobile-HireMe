@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 
 interface ButtonProps {
   onPress?: () => void;
@@ -7,21 +7,8 @@ interface ButtonProps {
 
 export default function MainButton({ onPress, text }: ButtonProps) {
   return (
-    <Pressable onPress={onPress} style={buttonStyles.button}>
-      <Text style={buttonStyles.text}>{text}</Text>
+    <Pressable onPress={onPress} className="bg-blue-700 rounded-xl px-3 py-4">
+      <Text className="text-white font-semibold">{text}</Text>
     </Pressable>
   );
 }
-
-const buttonStyles = StyleSheet.create({
-  button: {
-    backgroundColor: 'blue',
-    padding: 10,
-    borderRadius: 5,
-    margin: 10,
-  },
-  text: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-});

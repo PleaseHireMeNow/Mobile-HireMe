@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import { IUserContext, UserContext } from '../context/UserContext';
 import { useContext } from 'react';
@@ -8,35 +8,28 @@ export default function Page() {
   const { user, exampleName } = useContext(UserContext) as IUserContext;
 
   return (
-    <View style={styles.container}>
+    <View className="flex-1 items-center justify-around">
       <View>
-        <Link style={styles.link} href="/about">
+        <Link
+          className="text-blue-500 font-semibold rounded-lg text-lg"
+          href="/about"
+        >
           About
         </Link>
-        <Link style={styles.link} href="/doesnotexist">
+        <Link
+          className="text-blue-500 font-semibold rounded-lg text-lg"
+          href="/doesnotexist"
+        >
           Does Not Exist
         </Link>
       </View>
-      <View>
-        <Text>
+      <View className="flex flex-row gap-4">
+        <Text className="text-red-700 font-bold">
           {user ? `Hello, ${user.username}!` : 'You are not logged in.'}
         </Text>
-        <Text>{exampleName} FROM USE CONTEXT</Text>
+        <Text className="text-green-700">{exampleName} FROM USE CONTEXT</Text>
       </View>
       <MainButton text="PRESS ME" onPress={() => alert('HI THERE')} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  link: {
-    color: 'blue',
-    fontSize: 20,
-  },
-});

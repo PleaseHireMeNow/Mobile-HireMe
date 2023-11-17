@@ -3,9 +3,14 @@ import { View, Text } from 'react-native';
 
 export default function AboutPage() {
   return (
-    <View>
-      <Text>About</Text>
-      <Link href="/">Home</Link>
+    <View className="flex-1">
+      <Text className="text-xl">About</Text>
+      <Link
+        className="text-lg font-semibold text-blue-500 active:scale-105"
+        href="/"
+      >
+        Home
+      </Link>
     </View>
   );
 }
