@@ -7,7 +7,7 @@ import { View } from 'react-native';
 export default function Layout() {
   return (
     <UserContextProvider>
-      <View className="flex flex-1">
+      <View className="flex mt-20 mx-8 items-center flex-1">
         <Slot />
       </View>
     </UserContextProvider>

@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 
 export default function AboutPage() {
   return (
-    <View className="flex-1">
+    <View className="">
       <Text className="text-xl">About</Text>
       <Link
         className="text-lg font-semibold text-blue-500 active:scale-105"
@@ -13,6 +13,11 @@ export default function AboutPage() {
       >
         Home
       </Link>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non deleniti
+        ut pariatur eos nulla dolore enim officia dolorem possimus blanditiis
+        optio voluptate aut velit distinctio minima sunt eius, animi libero.
+      </Text>
     </View>
   );
 }
