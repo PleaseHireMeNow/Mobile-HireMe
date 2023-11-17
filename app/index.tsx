@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import MainButton from '../components/ui/Buttons/MainButton';
 
 export default function Page() {
-  const { user, exampleName } = useContext(UserContext) as IUserContext;
+  const { user, exampleName } = useContext(UserContext) as IUserContext; // annotation is required for typescript
 
   return (
     <View className="flex-1 items-center justify-around">

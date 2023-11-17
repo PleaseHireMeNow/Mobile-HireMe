@@ -1,3 +1,7 @@
+/*
+ * example use of constants or static variales
+ * don't actually use this file
+ */
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
 

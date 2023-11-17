@@ -5,7 +5,7 @@ import { requests } from './base';
 
 export const Account = {
   // get current user
-  current: () => requests.get<User>('/user'),
+  current: () => requests.get<User>('/user'), // specify the return type, here it is User
   /*
    * Fill in when we have more information
    */

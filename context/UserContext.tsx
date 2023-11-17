@@ -9,20 +9,29 @@ import {
 import { User } from '../types/models/User';
 import agent from '../api/agent';
 
+/*
+ * Interface for typescript
+ */
 export interface IUserContext {
   user: User | null;
   setUser: Dispatch<SetStateAction<User | null>>;
-  getLoggedInUser?: () => Promise<void>;
+  getLoggedInUser: () => Promise<void>;
   exampleName: string;
 }
 
+/*
+ * Create context and set default values
+ */
 export const UserContext = createContext<IUserContext>({
   user: null,
-  setUser: () => { },
+  setUser: () => {},
   getLoggedInUser: () => Promise.resolve(),
   exampleName: 'BOBBY',
 });
 
+/*
+ * Create context provider
+ */
 export const UserContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {

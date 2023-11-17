@@ -1,6 +1,8 @@
 import { Link } from 'expo-router';
 import { View, Text } from 'react-native';
 
+// example page component
+
 export default function AboutPage() {
   return (
     <View className="flex-1">
