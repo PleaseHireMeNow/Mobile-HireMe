@@ -43,15 +43,15 @@
        Session.ts
        User.ts
     requests
-       ErrorRequest.ts
-       Request.ts
+       ErrorResponse.ts
+       Response.ts
    .gitignore
    app.json
    App.tsx
    babel.config.js
    package-lock.json
    package.json
-   project-structure-mobile.md
+   ✗ project-structure-mobile.md
    tsconfig.json
 
 ## Root Level 
@@ -227,6 +227,15 @@ interface Question {
     isReviewed: boolean;
 }
 ```
+3. Requests the shape of our http request responses 
+```typescript
+interface Response<T> {
+    meta: string;
+    responseCode: string | number;
+    data: T
+}
+```
 
 Finally global state needs to be decided on
+
 
