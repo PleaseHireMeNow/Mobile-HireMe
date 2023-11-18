@@ -1,15 +1,15 @@
-import { Slot } from 'expo-router';
+import { Stack, Slot } from 'expo-router';
 import { UserContextProvider } from '../context/UserContext';
-import { View } from 'react-native';
 
-// Base layout for the app
 
-export default function Layout() {
+const StackLayout = () => {
   return (
     <UserContextProvider>
-      <View className="flex mt-20 mx-8 items-center flex-1">
-        <Slot />
-      </View>
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{headerShown:false}}/>
+    </Stack>
     </UserContextProvider>
   );
 }
+
+export default StackLayout;
