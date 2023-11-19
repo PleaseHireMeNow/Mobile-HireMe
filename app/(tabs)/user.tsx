@@ -1,11 +1,18 @@
-import { Link } from 'expo-router';
+import React from 'react';
 import { View, Text } from 'react-native';
+import { Link } from 'expo-router';
 
-export default function User () {
+export default function  User ()  {
   return (
     <View>
-        <Link href="/user/1">Topic 1</Link>
-        <Link href="/user/2">Topic 2</Link>
+      <Link href="/UserPage/1">
+        <Text>Topic 1</Text>
+      </Link>
+
+      <Link href="/UserPage/2">
+        <Text>Topic 2</Text>
+      </Link>
     </View>
   );
 };
+

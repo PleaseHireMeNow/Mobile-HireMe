@@ -1,15 +1,12 @@
-import { Stack, Slot } from 'expo-router';
+import { Stack } from 'expo-router';
 import { UserContextProvider } from '../context/UserContext';
 
-
-const StackLayout = () => {
+export default function StackLayout() {
   return (
     <UserContextProvider>
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{headerShown:false}}/>
-    </Stack>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
     </UserContextProvider>
   );
 }
-
-export default StackLayout;

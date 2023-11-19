@@ -1,18 +1,16 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Stack, useGlobalSearchParams } from 'expo-router'
+// DetailsPage.tsx
+import React from 'react';
+import { View, Text } from 'react-native';
+import { useGlobalSearchParams } from 'expo-router';
 
-const DetailsPage = () => {
-    const {id} = useGlobalSearchParams();
+export default function UserPage ()  {
+  const { id } = useGlobalSearchParams();
 
   return (
     <View>
-      <Stack.Screen options={{headerTitle: `Details #${id}`}}/>
       <Text>My details for: {id}</Text>
-
-
+      <Text>Hello</Text>
     </View>
-  )
-}
+  );
+};
 
-export default DetailsPage
