@@ -1,23 +1,16 @@
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { Link } from 'expo-router';
 import MultipleChoice from '../components/ui/FlashCards/MultipleChoice';
 import MainButton from '../components/ui/Buttons/MainButton';
+// import { ScrollView } from 'react-native-gesture-handler';
 
 
 
 export default function TempCardPage () {
 
-
     return (
-        <>
-        <Link
-        className=" font-semibold text-blue-500 active:scale-105"
-        href="/"
-      >
-        Home
-      </Link>
+        <View>
         <MultipleChoice />
-        <MainButton text="submit" onPress={() => alert('I do not do anything')}/>
-       </>
+        </View>
     )
 }

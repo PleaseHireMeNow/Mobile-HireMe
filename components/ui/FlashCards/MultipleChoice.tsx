@@ -1,35 +1,60 @@
-import { Text, View } from 'react-native';
+import { Text, View, StyleSheet, ViewStyle } from 'react-native';
 import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
 import MainButton from '../Buttons/MainButton';
+import FlipCard from 'react-native-flip-card';
 
+export default function MultipleChoice() {
+  const randomSentence = faker.lorem.sentence({ min: 5, max: 20 });
+  const randomAnswerA = faker.lorem.sentence({ min: 1, max: 6 });
+  const randomAnswerB = faker.lorem.sentence({ min: 1, max: 6 });
+  const randomAnswerC = faker.lorem.sentence({ min: 1, max: 6 });
+  const randomAnswerD = faker.lorem.sentence({ min: 1, max: 6 });
 
+  const styles = StyleSheet.create({
+    card: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    face: {
+      flex: 1,
+      backgroundColor: 'red',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    back: {
+      flex: 1,
+      backgroundColor: 'blue',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
 
-export default function MultipleChoice () {
-
-    const randomSentence = faker.lorem.sentence({min: 5, max: 20});
-    const randomAnswerA = faker.lorem.sentence({min: 1, max: 6});
-    const randomAnswerB = faker.lorem.sentence({min: 1, max: 6});
-    const randomAnswerC = faker.lorem.sentence({min: 1, max: 6});
-    const randomAnswerD = faker.lorem.sentence({min: 1, max: 6});
-
-    return (
-        <View className='flex flex-col'>
-            <View className='question-container w-[90vw] rounded-lg border-2 border-black p-4 my-2'>
-                <Text className='text-xl font-semibold'>{randomSentence}?</Text>
-            </View>
-            <View className="answerA w-[90vw] rounded-lg border-2 border-black p-4 my-2">
-                <Text className='text-lg font-semibold'>A: {randomAnswerA}</Text>
-            </View>
-            <View className="answerB w-[90vw] rounded-lg border-2 border-black p-4 my-2">
-                <Text className='text-lg font-semibold'>B: {randomAnswerB}</Text>
-            </View>
-            <View className="answerC w-[90vw] rounded-lg border-2 border-black p-4 my-2">
-                <Text className='text-lg font-semibold'>C: {randomAnswerC}</Text>
-            </View>
-            <View className="answerD w-[90vw] rounded-lg border-2 border-black p-4 my-2">
-                <Text className='text-lg font-semibold'>D: {randomAnswerD}</Text>
-            </View>
+  return (
+    <>
+      <FlipCard
+        style={styles.card}
+        friction={6}
+        perspective={1000}
+        flipHorizontal={true}
+        flipVertical={false}
+        flip={false}
+        clickable={true}
+        //onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
+        onFlipEnd={() => {
+          console.log('Flip animation has ended');
+        }}
+      >
+        <View style={styles.face}>
+          <Text>The Face</Text>
         </View>
-    )
+
+        <View style={styles.back}>
+          <Text>The Back</Text>
+        </View>
+      </FlipCard>
+    </>
+  );
 }
