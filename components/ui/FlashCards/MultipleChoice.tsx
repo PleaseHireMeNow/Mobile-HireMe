@@ -5,11 +5,11 @@ import { faker } from '@faker-js/faker';
 import MainButton from '../Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
 
-const initialColorState: Record<string, string> = {
-  A: '',
-  B: '',
-  C: '',
-  D: '',
+const initialColorState = {
+  A: 'white',
+  B: 'white',
+  C: 'white',
+  D: 'white',
 };
 
 const MultipleChoice = () => {
@@ -48,25 +48,15 @@ const MultipleChoice = () => {
     setBackgroundColor(initialColorState);
   };
 
-  const handleSelectAnswer = (selectedAnswer: string) => {
-    setSelectAnswer((prevSelectedAnswer) =>
-      prevSelectedAnswer === selectedAnswer ? '' : selectedAnswer
-    );
-
-    setBackgroundColor((prevColors) => {
-      const updatedColors: Record<string, string> = {};
-      // Reset all answers to white
-      Object.keys(initialColorState).forEach((key) => {
-        updatedColors[key] = 'white';
-      });
-
-      // Set the selected answer to yellow
-      updatedColors[selectedAnswer] = '#ffee87';
-
-      return updatedColors;
-    });
+  const handleSelectAnswer = (selectAnswer: string) => { 
+    setSelectAnswer(selectAnswer); 
+    setBackgroundColor(initialColorState); 
+    setBackgroundColor((prevColors) => ({ 
+      ...prevColors, 
+      [selectAnswer]: '#ffee87',
+    }));
   };
-
+ 
   const styles = StyleSheet.create({
     card: {
       flex: 1,
@@ -108,19 +98,20 @@ const MultipleChoice = () => {
         // perspective={1000} // lower number = more flat
         flipHorizontal={true}
         flipVertical={false}
-        clickable={false}
+        clickable={false} 
         //onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
       >
         <View
           style={styles.face}
           className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          <Text className="absolute top-4 p-2">
-            <Text className="text-6xl text-center">😼</Text>
-            {'\n'}
-            <Text className="text-xl">{randomSentence}?</Text>
-          </Text>
-
+          
+            <Text className='absolute top-4 p-2'>
+              <Text className="text-6xl text-center">😼</Text>
+              {'\n'}
+              <Text className="text-xl">{randomSentence}?</Text>
+            </Text>
+          
           <View className="absolute bottom-20">
             <Pressable
               style={{
