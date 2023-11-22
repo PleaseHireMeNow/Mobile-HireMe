@@ -5,14 +5,18 @@ import { faker } from '@faker-js/faker';
 import MainButton from '../Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
 
+const initialColorState: Record<string, string> = {
+  A: '',
+  B: '',
+  C: '',
+  D: '',
+};
+
 const MultipleChoice = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectAnswer, setSelectAnswer] = useState('');
-  const [backgroundColorA, setBackgroundColorA] = useState('');
-  const [backgroundColorB, setBackgroundColorB] = useState('');
-  const [backgroundColorC, setBackgroundColorC] = useState('');
-  const [backgroundColorD, setBackgroundColorD] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
+  const [backgroundColor, setBackgroundColor] = useState(initialColorState);
 
   const generateRandomData = () => {
     return {
@@ -41,38 +45,26 @@ const MultipleChoice = () => {
   const handleNextButton = () => {
     setIsFlipped(!isFlipped);
     setNextButtonPressed(!nextButtonPressed); // Toggle the state to trigger useMemo recalculation
-    setBackgroundColorA('white');
-    setBackgroundColorB('white');
-    setBackgroundColorC('white');
-    setBackgroundColorD('white');
+    setBackgroundColor(initialColorState);
   };
 
-  const handleSelectAnswer = (selectAnswer: string) => { //typescript!
-    setSelectAnswer(selectAnswer);
+  const handleSelectAnswer = (selectedAnswer: string) => {
+    setSelectAnswer((prevSelectedAnswer) =>
+      prevSelectedAnswer === selectedAnswer ? '' : selectedAnswer
+    );
 
-    // Reset all background colors to white
-    setBackgroundColorA('white');
-    setBackgroundColorB('white');
-    setBackgroundColorC('white');
-    setBackgroundColorD('white');
+    setBackgroundColor((prevColors) => {
+      const updatedColors: Record<string, string> = {};
+      // Reset all answers to white
+      Object.keys(initialColorState).forEach((key) => {
+        updatedColors[key] = 'white';
+      });
 
-    // Set the background color of the selected answer to yellow
-    switch (selectAnswer) {
-      case 'A':
-        setBackgroundColorA('#ffee87');
-        break;
-      case 'B':
-        setBackgroundColorB('#ffee87');
-        break;
-      case 'C':
-        setBackgroundColorC('#ffee87');
-        break;
-      case 'D':
-        setBackgroundColorD('#ffee87');
-        break;
-      default:
-        break;
-    }
+      // Set the selected answer to yellow
+      updatedColors[selectedAnswer] = '#ffee87';
+
+      return updatedColors;
+    });
   };
 
   const styles = StyleSheet.create({
@@ -116,25 +108,24 @@ const MultipleChoice = () => {
         // perspective={1000} // lower number = more flat
         flipHorizontal={true}
         flipVertical={false}
-        clickable={false} 
+        clickable={false}
         //onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
       >
         <View
           style={styles.face}
           className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          
-            <Text className='absolute top-4 p-2'>
-              <Text className="text-6xl text-center">😼</Text>
-              {'\n'}
-              <Text className="text-xl">{randomSentence}?</Text>
-            </Text>
-          
+          <Text className="absolute top-4 p-2">
+            <Text className="text-6xl text-center">😼</Text>
+            {'\n'}
+            <Text className="text-xl">{randomSentence}?</Text>
+          </Text>
+
           <View className="absolute bottom-20">
             <Pressable
               style={{
                 ...styles.pressable,
-                backgroundColor: backgroundColorA,
+                backgroundColor: backgroundColor.A,
               }}
               className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
               onPress={() => handleSelectAnswer('A')}
@@ -147,7 +138,7 @@ const MultipleChoice = () => {
             <Pressable
               style={{
                 ...styles.pressable,
-                backgroundColor: backgroundColorB,
+                backgroundColor: backgroundColor.B,
               }}
               className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
               onPress={() => handleSelectAnswer('B')}
@@ -160,7 +151,7 @@ const MultipleChoice = () => {
             <Pressable
               style={{
                 ...styles.pressable,
-                backgroundColor: backgroundColorC,
+                backgroundColor: backgroundColor.C,
               }}
               className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
               onPress={() => handleSelectAnswer('C')}
@@ -173,7 +164,7 @@ const MultipleChoice = () => {
             <Pressable
               style={{
                 ...styles.pressable,
-                backgroundColor: backgroundColorD,
+                backgroundColor: backgroundColor.D,
               }}
               className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
               onPress={() => handleSelectAnswer('D')}
