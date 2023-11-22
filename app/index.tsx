@@ -5,8 +5,16 @@ import { useContext } from 'react';
 import MainButton from '../components/ui/Buttons/MainButton';
 import SecondaryButton from '../components/ui/Buttons/SecondaryButton';
 
+
+
+
+
+
+
 export default function Page() {
   const { user, exampleName } = useContext(UserContext) as IUserContext; // annotation is required for typescript
+  
+
 
   return (
     <View className="flex-1 items-center justify-around bg-sunglow-300">
@@ -23,6 +31,12 @@ export default function Page() {
         >
           Does Not Exist
         </Link>
+        <Link
+          className="text-blue-500 font-semibold rounded-lg text-lg"
+          href="/tempCardPage"
+        >
+          Temp Card Page
+        </Link>
       </View>
       <View className="flex flex-row gap-4">
         <Text className="text-red-700 font-bold">
@@ -32,6 +46,7 @@ export default function Page() {
       </View>
       <SecondaryButton text="big round" onPress={() => alert('I am round')} />
       <MainButton text="PRESS ME" onPress={() => alert('HI THERE')} />
+      
     </View>
   );
 }

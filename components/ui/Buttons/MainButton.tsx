@@ -10,9 +10,9 @@ export default function MainButton({ onPress, text }: ButtonProps) {
   return (
     <Pressable 
       onPress={onPress} 
-      className="bg-sunglow-950 rounded-xl px-6 py-3">
+      className="bg-white rounded-xl border-black border-[1px] px-4 py-2 my-1 absolute bottom-4">
       
-      <Text className="text-white text-lg font-semibold capitalize ">{text}</Text>
+      <Text className="text-black text-base font-semibold capitalize ">{text}</Text>
     </Pressable>
   );
 }
