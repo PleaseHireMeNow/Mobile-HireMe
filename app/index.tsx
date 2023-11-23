@@ -8,6 +8,8 @@ import AuthButton from '../components/ui/Buttons/AuthButton';
 
 export default function Page() {
   const { user, exampleName } = useContext(UserContext) as IUserContext; // annotation is required for typescript
+  
+
 
   return (
     <View className="items-center justify-around flex-1 bg-sunglow-300">
@@ -36,6 +38,12 @@ export default function Page() {
         >
           Does Not Exist
         </Link>
+        <Link
+          className="text-lg font-semibold text-blue-500 rounded-lg"
+          href="/tempCardPage"
+        >
+          Temp Card Page
+        </Link>
       </View>
       <View className="flex flex-row gap-4">
         <Text className="font-bold text-red-700">
@@ -45,6 +53,7 @@ export default function Page() {
       </View>
       <SecondaryButton text="big round" onPress={() => alert('I am round')} />
       <MainButton text="PRESS ME" onPress={() => alert('HI THERE')} />
+      
    <AuthButton text="Log In" onPress={() => alert('Test Test')}/>
     </View>
   );
