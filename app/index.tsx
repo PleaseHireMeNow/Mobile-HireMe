@@ -52,9 +52,8 @@ export default function Page() {
         <Text className="text-green-700">{exampleName} FROM USE CONTEXT</Text>
       </View>
       <SecondaryButton text="big round" onPress={() => alert('I am round')} />
+      <AuthButton text="Log In" onPress={() => alert('Test Test')}/>
       <MainButton text="PRESS ME" onPress={() => alert('HI THERE')} />
-      
-   <AuthButton text="Log In" onPress={() => alert('Test Test')}/>
-    </View>
+     </View>
   );
 }
