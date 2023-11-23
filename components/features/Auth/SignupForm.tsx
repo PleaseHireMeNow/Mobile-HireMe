@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { TextInput, Text, View } from 'react-native';
 import { Link } from 'expo-router';
-import Svg, { Path } from 'react-native-svg';
 import AuthButton from '../../ui/Buttons/AuthButton';
+import { Path, Svg } from 'react-native-svg';
 
-export default function LoginForm() {
+export default function SignupForm() {
+  const [email, setEmail] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const handleLogin = () => {
+  const handleSignup = () => {
     // form submission logic here
     console.log(username);
   };
@@ -16,12 +17,26 @@ export default function LoginForm() {
   return (
     <View className="flex items-center justify-center w-screen h-screen p-2 overflow-hidden bg-yellow-400 dark:bg-gray-800">
       <View className="justify-center w-4/5 py-5 bg-white bottom-10 h-1/2 shadow-3xl rounded-3xl">
-        <View className="flex w-1/6 p-4 mx-auto bg-gray-800 rounded-full shadow shadow-gray-200">
-          <Svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF">
-            <Path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-          </Svg>
-        </View>
         <View className="px-12 py-10">
+          <View className="flex items-center mb-4 text-lg ">
+            <Svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              className="absolute z-10 top-2 left-4 "
+              fill="#000000"
+            >
+              <Path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
+            </Svg>
+            <TextInput
+              className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:outline-none"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+              placeholder="Email"
+              id="email"
+            />
+          </View>
+
           <View className="flex items-center mb-4 text-lg ">
             <Svg
               width="20"
@@ -39,6 +54,7 @@ export default function LoginForm() {
               id="username"
             />
           </View>
+
           <View className="flex items-center mb-4 text-lg ">
             <Svg
               width="20"
@@ -56,15 +72,16 @@ export default function LoginForm() {
               secureTextEntry // Hides password
             />
           </View>
+
           <View className="items-center py-4">
-            <AuthButton text="Login" onPress={handleLogin} />
+            <AuthButton text="Signup" onPress={handleSignup} />
           </View>
         </View>
         <Text className="text-center underline">
-          <Link href="/signup">Create an account? Signup</Link>
+          <Link href="/login">Have an account? Login</Link>
         </Text>
       </View>
-
+      
       <View>
         {/* Need to move this somewhere */}
         <Link
