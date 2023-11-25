@@ -1,8 +1,9 @@
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Share } from 'react-native';
 import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MainButton from '../components/ui/Buttons/MainButton';
+import ShareButton from '../components/ui/Buttons/ShareButton';
 
 export default function ResultsPage() {
   return (
@@ -17,7 +18,7 @@ export default function ResultsPage() {
       <View className="flex justify-center items-center w-[90vw] bg-white px-1 py-6 my-2 rounded-lg border-solid black border-[1px] shadow-xl">
         <Text className="text-3xl text-center">Test Complete!</Text>
         <View className="relative left-32">
-          <Icon name="share-outline" size={30} />
+          <ShareButton />
         </View>
 
         <View className="flex flex-row">
