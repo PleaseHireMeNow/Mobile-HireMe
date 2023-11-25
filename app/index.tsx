@@ -8,8 +8,6 @@ import AuthButton from '../components/ui/Buttons/AuthButton';
 
 export default function Page() {
   const { user, exampleName } = useContext(UserContext) as IUserContext; // annotation is required for typescript
-  
-
 
   return (
     <View className="items-center justify-around flex-1 bg-sunglow-300">
@@ -30,7 +28,7 @@ export default function Page() {
           className="text-lg font-semibold text-blue-500 rounded-lg"
           href="/login"
         >
-         Log in
+          Log in
         </Link>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
@@ -50,6 +48,11 @@ export default function Page() {
           >
           Results Page
           </Link>
+        <Link href="/sessionSelect">
+          <Text className="text-lg font-semibold text-blue-500 rounded-lg">
+            Session Select
+          </Text>
+        </Link>
       </View>
       <View className="flex flex-row gap-4">
         <Text className="font-bold text-red-700">
@@ -58,8 +61,8 @@ export default function Page() {
         <Text className="text-green-700">{exampleName} FROM USE CONTEXT</Text>
       </View>
       <SecondaryButton text="big round" onPress={() => alert('I am round')} />
-      <AuthButton text="Log In" onPress={() => alert('Test Test')}/>
+      <AuthButton text="Log In" onPress={() => alert('Test Test')} />
       <MainButton text="PRESS ME" onPress={() => alert('HI THERE')} />
-     </View>
+    </View>
   );
 }
