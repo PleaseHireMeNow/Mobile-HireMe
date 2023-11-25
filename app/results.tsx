@@ -8,7 +8,7 @@ export default function ResultsPage() {
 
     const randomPercentNumber = faker.number.int({ min: 10, max: 96 });
     const randomMinutesNumber = faker.number.int({ min: 4, max: 22 }); 
-    
+
   return (
     <View className="justify-center items-center bg-sunglow-300 h-full w-[100vw]">
       <Link
@@ -25,10 +25,10 @@ export default function ResultsPage() {
         </View>
 
         <View className="flex flex-row">
-          <View className="px-6 py-8 m-4 rounded-lg border-solid black border-[1px] shadow-xl">
+          <View className="px-6 py-8 m-4  bg-white rounded-lg border-solid black border-[1px] shadow-xl">
             <Text className="text-xl">⏲ {randomMinutesNumber} min</Text>
           </View>
-          <View className="px-6 py-8 m-4 rounded-lg border-solid black border-[1px] shadow-xl">
+          <View className="px-6 py-8 m-4 bg-white rounded-lg border-solid black border-[1px] shadow-xl">
             <Text className="text-xl">🎯 %{randomPercentNumber}</Text>
           </View>
         </View>
