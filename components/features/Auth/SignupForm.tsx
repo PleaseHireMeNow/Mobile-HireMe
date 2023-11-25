@@ -19,7 +19,7 @@ export default function SignupForm() {
     <>
       <TopTab />
       <View className="flex items-center justify-center w-screen h-screen p-2 overflow-hidden bg-yellow-400 dark:bg-gray-800">
-        <View className="justify-center w-4/5 py-5 bg-white bottom-14 h-1/2 shadow-3xl rounded-3xl">
+        <View className="justify-center w-4/5 py-5 bg-white shadow-sm shadow-gray-400 bottom-14 h-1/2 shadow-3xl rounded-3xl">
           <View className="px-12 py-10">
             <View className="flex items-center mb-4 text-lg ">
               <Icon
@@ -28,7 +28,7 @@ export default function SignupForm() {
                 style={{ position: 'absolute', zIndex: 10, top: 10, left: 10 }}
               />
               <TextInput
-                className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:outline-none"
+                className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:shadow-sm focus:shadow-gray-400 focus:outline-none"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
                 placeholder="Email"
@@ -42,7 +42,7 @@ export default function SignupForm() {
                 style={{ position: 'absolute', zIndex: 10, top: 10, left: 10 }}
               />
               <TextInput
-                className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:outline-none"
+                className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:shadow-sm focus:shadow-gray-400 focus:outline-none"
                 onChangeText={(text) => setUsername(text)}
                 value={username}
                 placeholder="Username"
@@ -56,7 +56,7 @@ export default function SignupForm() {
                 style={{ position: 'absolute', zIndex: 10, top: 10, left: 10 }}
               />
               <TextInput
-                className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:outline-none"
+                className="w-full py-3 pl-12 bg-gray-200 rounded-lg focus:shadow-sm focus:shadow-gray-400 focus:outline-none"
                 onChangeText={(text) => setPassword(text)}
                 value={password}
                 placeholder="Password"
