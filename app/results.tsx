@@ -1,11 +1,14 @@
 import { Text, View, StyleSheet, Pressable, Share } from 'react-native';
 import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
-import Icon from 'react-native-vector-icons/Ionicons';
 import MainButton from '../components/ui/Buttons/MainButton';
 import ShareButton from '../components/ui/Buttons/ShareButton';
 
 export default function ResultsPage() {
+
+    const randomPercentNumber = faker.number.int({ min: 10, max: 96 });
+    const randomMinutesNumber = faker.number.int({ min: 4, max: 22 }); 
+    
   return (
     <View className="justify-center items-center bg-sunglow-300 h-full w-[100vw]">
       <Link
@@ -23,10 +26,10 @@ export default function ResultsPage() {
 
         <View className="flex flex-row">
           <View className="px-6 py-8 m-4 rounded-lg border-solid black border-[1px] shadow-xl">
-            <Text className="text-xl">⏲ 9 min</Text>
+            <Text className="text-xl">⏲ {randomMinutesNumber} min</Text>
           </View>
           <View className="px-6 py-8 m-4 rounded-lg border-solid black border-[1px] shadow-xl">
-            <Text className="text-xl">🎯 %80</Text>
+            <Text className="text-xl">🎯 %{randomPercentNumber}</Text>
           </View>
         </View>
       </View>

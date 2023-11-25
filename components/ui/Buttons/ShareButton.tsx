@@ -7,7 +7,7 @@ const ShareButton = () => {
     try {
       const result = await Share.share({
         message:
-          'Code Cat | Prepares you for your next coding interview.',
+          'Code Cat and/or Dev Dog | Prepares you for your next coding interview!',
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
