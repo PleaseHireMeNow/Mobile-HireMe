@@ -1,3 +1,8 @@
+import { useContext } from 'react';
+import {
+  SessionFormContext,
+  ISessionFormContext,
+} from '../../../context/SessionFormContext';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -10,10 +15,13 @@ interface TopicItemProps {
 }
 
 export default function TopicIcon({ Icon }: TopicItemProps) {
+  const { selectedTopic } = useContext(
+    SessionFormContext
+  ) as ISessionFormContext;
   const { icon, lib, size, color } = Icon;
 
   const iconSize = size ? parseInt(size) : 36;
-  const iconColor = color ? color : '#000';
+  const iconColor = selectedTopic === Icon.name ? '#FACC15' : color;
 
   switch (lib) {
     case 'FA':

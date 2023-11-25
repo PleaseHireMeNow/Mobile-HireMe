@@ -25,7 +25,7 @@ const DevIcons: DevIcon[] = [
     name: 'JavaScript',
     icon: 'language-javascript',
     lib: 'MCI',
-    color: '#F7DF1E',
+    color: '#EAB308',
   },
   {
     name: 'TypeScript',
