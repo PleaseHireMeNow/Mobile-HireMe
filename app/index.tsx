@@ -42,6 +42,12 @@ export default function Page() {
         >
           Temp Card Page
         </Link>
+        <Link
+          className="text-lg font-semibold text-blue-500 rounded-lg"
+          href="/results"
+          >
+          Results Page
+          </Link>
         <Link href="/sessionSelect">
           <Text className="text-lg font-semibold text-blue-500 rounded-lg">
             Session Select
