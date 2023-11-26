@@ -18,8 +18,8 @@ export default function SignupForm() {
   return (
     <>
       <TopTab />
-      <View className="flex items-center justify-center w-screen h-screen p-2 overflow-hidden bg-yellow-400 dark:bg-gray-800">
-        <View className="justify-center w-4/5 py-5 bg-white shadow-sm shadow-gray-400 bottom-14 h-1/2 shadow-3xl rounded-3xl">
+      <View className="flex items-center justify-center w-screen h-screen p-2 overflow-hidden bg-sunglow-300 dark:bg-gray-800">
+        <View className="justify-center w-4/5 py-5 bg-white shadow-sm shadow-gray-400 bottom-20 h-1/2 shadow-3xl rounded-3xl">
           <View className="px-12 py-10">
             <View className="flex items-center mb-4 text-lg ">
               <Icon

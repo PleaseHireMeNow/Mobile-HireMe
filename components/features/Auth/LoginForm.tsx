@@ -19,8 +19,8 @@ export default function LoginForm() {
     <>
       {/* gap-y-6 shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white */}
       <TopTab />
-      <View className="flex items-center justify-center w-screen h-screen p-2 overflow-hidden bg-yellow-400 dark:bg-gray-800">
-        <View className="justify-center w-4/5 py-5 bg-white shadow-sm shadow-gray-400 bottom-14 h-1/2 shadow-3xl rounded-3xl">
+      <View className="flex items-center justify-center w-screen h-screen p-2 overflow-hidden bg-sunglow-300 dark:bg-gray-800">
+        <View className="justify-center w-4/5 py-5 bg-white shadow-sm shadow-gray-400 bottom-20 h-1/2 shadow-3xl rounded-3xl">
           <View className="flex w-1/6 p-4 mx-auto bg-gray-800 rounded-full shadow shadow-gray-200">
             <Icon2 name="login" size={20} color="white" />
           </View>

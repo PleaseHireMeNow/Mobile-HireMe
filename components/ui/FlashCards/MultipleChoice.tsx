@@ -1,9 +1,17 @@
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Image } from 'react-native';
 import React, { useState, useMemo } from 'react';
 import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
 import MainButton from '../Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+// Import your images
+import codecat from './codecat.png';
+import devdog from './devdog.png';
+import TopTab from '../Navigation/TopTab';
+
+const imageSources = [codecat, devdog];
 
 const initialColorState = {
   A: 'white',
@@ -13,6 +21,12 @@ const initialColorState = {
 };
 
 const MultipleChoice = () => {
+  // Image randomization
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const getRandomImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
+  };
+
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectAnswer, setSelectAnswer] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
@@ -46,17 +60,18 @@ const MultipleChoice = () => {
     setIsFlipped(!isFlipped);
     setNextButtonPressed(!nextButtonPressed); // Toggle the state to trigger useMemo recalculation
     setBackgroundColor(initialColorState);
+    getRandomImage(); // Toggle the image
   };
 
-  const handleSelectAnswer = (selectAnswer: string) => { 
-    setSelectAnswer(selectAnswer); 
-    setBackgroundColor(initialColorState); 
-    setBackgroundColor((prevColors) => ({ 
-      ...prevColors, 
+  const handleSelectAnswer = (selectAnswer: string) => {
+    setSelectAnswer(selectAnswer);
+    setBackgroundColor(initialColorState);
+    setBackgroundColor((prevColors) => ({
+      ...prevColors,
       [selectAnswer]: '#ffee87',
     }));
   };
- 
+
   const styles = StyleSheet.create({
     card: {
       flex: 1,
@@ -85,12 +100,13 @@ const MultipleChoice = () => {
 
   return (
     <>
-      <Link
-        className="text-lg font-semibold text-blue-500 active:scale-105"
+    <View className='flex flex-row justify-end pb-3 mr-3'>
+   <Link
+ className="font-semibold text-blue-500 ml-50 active:scale-105"
         href="/"
       >
-        Home
-      </Link>
+          <Icon name="user" size={30} color="#000" />
+      </Link></View>
       <FlipCard
         style={styles.card}
         flip={isFlipped}
@@ -98,20 +114,25 @@ const MultipleChoice = () => {
         // perspective={1000} // lower number = more flat
         flipHorizontal={true}
         flipVertical={false}
-        clickable={false} 
+        clickable={false}
         //onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
       >
         <View
           style={styles.face}
-          className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
+          className="max-w-[90vw] w-[90vw] p-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          
-            <Text className='absolute top-4 p-2'>
-              <Text className="text-6xl text-center">😼</Text>
-              {'\n'}
-              <Text className="text-xl">{randomSentence}?</Text>
+          <Text className="absolute p-2 top-4">
+            <Text className="flex text-center">
+              {' '}
+              <Image
+                style={{ maxWidth: 150, maxHeight: 200 }}
+                source={imageSources[currentImageIndex]}
+              />
             </Text>
-          
+            {'\n'}
+            <Text className="text-xl">{randomSentence}?</Text>
+          </Text>
+
           <View className="absolute bottom-20">
             <Pressable
               style={{
@@ -173,17 +194,17 @@ const MultipleChoice = () => {
           style={styles.back}
           className="max-w-[90vw] w-[90vw] rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          <Text className=" absolute top-4 p-2">
-            <Text className="text-center text-6xl">😺</Text>
+          <Text className="absolute p-2 top-4">
+            <Text className="text-6xl text-center">😺</Text>
             {'\n'}
-            <Text className="text-center text-4xl">Correct!</Text>
+            <Text className="text-4xl text-center">Correct!</Text>
           </Text>
 
           <View className="p-4">
             <Text className="text-xl">{correctAnswer}</Text>
           </View>
           <Link
-            className="text-md mt-16 font-semibold text-blue-500 active:scale-105"
+            className="mt-16 font-semibold text-blue-500 text-md active:scale-105"
             href="/"
           >
             Rate this question
