@@ -1,6 +1,5 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import React, { useState, useMemo } from 'react';
-import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
 import MainButton from '../components/ui/Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
@@ -62,7 +61,6 @@ const MultipleChoice = () => {
   const styles = StyleSheet.create({
     card: {
       flex: 1,
-      //backgroundColor: '#ffdd43',
       alignItems: 'center',
       justifyContent: 'center',
       paddingBottom: 105,
@@ -71,14 +69,11 @@ const MultipleChoice = () => {
     },
     face: {
       flex: 1,
-      //backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
-      //width: '90vw',
     },
     back: {
       flex: 1,
-      // backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -108,7 +103,6 @@ const MultipleChoice = () => {
             {'\n'}
             <Text className="text-base">{randomSentence}?</Text>
           </Text>
-
           <View className="absolute bottom-20">
             <Pressable
               style={{
@@ -165,7 +159,6 @@ const MultipleChoice = () => {
           </View>
           <MainButton text="Submit" onPress={handleSubmit} />
         </View>
-
         <View
           style={styles.back}
           className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
@@ -175,7 +168,6 @@ const MultipleChoice = () => {
             {'\n'}
             <Text className="text-center text-4xl">Correct!</Text>
           </Text>
-
           <View className="p-4">
             <Text className="text-lg">{correctAnswer}</Text>
           </View>
@@ -183,7 +175,6 @@ const MultipleChoice = () => {
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
-    
     </HeaderWrapper>
   );
 };

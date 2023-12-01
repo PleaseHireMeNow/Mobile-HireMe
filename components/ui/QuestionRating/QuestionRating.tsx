@@ -1,5 +1,5 @@
 import { Text, View, Alert, TouchableOpacity } from 'react-native';
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const QuestionRating = () => {
@@ -26,7 +26,7 @@ const QuestionRating = () => {
         onPress: () => {
           setTimeout(() => {
             setIsVisible(false);
-          }, 0); // Adjust the delay as needed
+          }, 0);
         },
       },
     ]);
@@ -36,7 +36,7 @@ const QuestionRating = () => {
     <>
       {isVisible ? (
         <View className="flex-row items-center justify-center p-2">
-          <Text className='items-center'>
+          <Text className="items-center">
             <View className="rating-text  pr-2 pb-2">
               <Text className="text-gray-700">Was this question helpful? </Text>
             </View>
