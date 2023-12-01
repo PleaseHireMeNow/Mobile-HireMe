@@ -5,6 +5,7 @@ import { faker } from '@faker-js/faker';
 import MainButton from '../components/ui/Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
 import QuestionRating from '../components/ui/QuestionRating/QuestionRating';
+import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 const initialColorState = {
   A: 'white',
@@ -61,21 +62,23 @@ const MultipleChoice = () => {
   const styles = StyleSheet.create({
     card: {
       flex: 1,
-      backgroundColor: '#fff',
+      //backgroundColor: '#ffdd43',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingBottom: 20,
+      paddingBottom: 105,
+      paddingTop: 10,
       flexWrap: 'wrap',
     },
     face: {
       flex: 1,
-      backgroundColor: 'white',
+      //backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
+      //width: '90vw',
     },
     back: {
       flex: 1,
-      backgroundColor: 'white',
+      // backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -85,13 +88,7 @@ const MultipleChoice = () => {
   });
 
   return (
-    <View>
-      <Link
-        className="text-lg font-semibold text-blue-500 active:scale-105"
-        href="/"
-      >
-        Home
-      </Link>
+    <HeaderWrapper>
       <FlipCard
         style={styles.card}
         flip={isFlipped}
@@ -106,10 +103,10 @@ const MultipleChoice = () => {
           style={styles.face}
           className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
-          <Text className="absolute top-4 p-2">
+          <Text className="absolute top-6 p-2">
             <Text className="text-6xl text-center">😼</Text>
             {'\n'}
-            <Text className="text-lg">{randomSentence}?</Text>
+            <Text className="text-base">{randomSentence}?</Text>
           </Text>
 
           <View className="absolute bottom-20">
@@ -173,20 +170,21 @@ const MultipleChoice = () => {
           style={styles.back}
           className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
-          <Text className=" absolute top-4 p-2">
+          <Text className=" absolute top-6 p-2">
             <Text className="text-center text-6xl">😺</Text>
             {'\n'}
             <Text className="text-center text-4xl">Correct!</Text>
           </Text>
 
           <View className="p-4">
-            <Text className="text-xl">{correctAnswer}</Text>
+            <Text className="text-lg">{correctAnswer}</Text>
           </View>
           <QuestionRating />
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
-    </View>
+    
+    </HeaderWrapper>
   );
 };
 export default MultipleChoice;
