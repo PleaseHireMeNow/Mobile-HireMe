@@ -28,7 +28,7 @@ const MultipleChoice = () => {
   };
 
   const [isFlipped, setIsFlipped] = useState(false);
-  const [selectAnswer, setSelectAnswer] = useState('');
+  const [_, setSelectAnswer] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(initialColorState);
 
@@ -80,6 +80,7 @@ const MultipleChoice = () => {
       justifyContent: 'center',
       paddingBottom: 20,
       flexWrap: 'wrap',
+      maxHeight: '80%',
     },
     face: {
       flex: 1,
@@ -99,14 +100,7 @@ const MultipleChoice = () => {
   });
 
   return (
-    <>
-    <View className='flex flex-row justify-end pb-3 mr-3'>
-   <Link
- className="font-semibold text-blue-500 ml-50 active:scale-105"
-        href="/"
-      >
-          <Icon name="user" size={30} color="#000" />
-      </Link></View>
+    <View className="h-full pt-8">
       <FlipCard
         style={styles.card}
         flip={isFlipped}
@@ -121,18 +115,13 @@ const MultipleChoice = () => {
           style={styles.face}
           className="max-w-[90vw] w-[90vw] p-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          <Text className="absolute p-2 top-4">
-            <Text className="flex text-center">
-              {' '}
-              <Image
-                style={{ maxWidth: 150, maxHeight: 200 }}
-                source={imageSources[currentImageIndex]}
-              />
+          
+            <Text className='absolute p-2 top-4'>
+              <Text className="text-6xl text-center">😼</Text>
+              {'\n'}
+              <Text className="text-xl">{randomSentence}?</Text>
             </Text>
-            {'\n'}
-            <Text className="text-xl">{randomSentence}?</Text>
-          </Text>
-
+          
           <View className="absolute bottom-20">
             <Pressable
               style={{
@@ -212,7 +201,7 @@ const MultipleChoice = () => {
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
-    </>
+    </View>
   );
 };
 export default MultipleChoice;
