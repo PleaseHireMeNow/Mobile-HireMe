@@ -13,7 +13,7 @@ export default function DifficultySelect() {
   const difficulties = ['Easy', 'Med', 'Hard', 'Pro'] as Difficulty[];
 
   return (
-    <View className="shadow-sm shadow-gray-500 font-thin flex py-4 items-center rounded-3xl bg-white">
+    <View className="flex items-center py-4 font-thin bg-white shadow-sm shadow-gray-400 rounded-3xl">
       <View className="flex flex-row gap-x-4">
         {difficulties.map((difficulty) => {
           const difficultyStyle =

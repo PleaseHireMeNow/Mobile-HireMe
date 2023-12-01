@@ -6,12 +6,8 @@ import MainButton from '../Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// Import your images
-import codecat from './codecat.png';
-import devdog from './devdog.png';
-import TopTab from '../Navigation/TopTab';
 
-const imageSources = [codecat, devdog];
+const imageSources = ['🐶', '🐱'];
 
 const initialColorState = {
   A: 'white',
@@ -81,6 +77,8 @@ const MultipleChoice = () => {
       paddingBottom: 20,
       flexWrap: 'wrap',
       maxHeight: '80%',
+      borderRadius: 16,
+      overflow: 'hidden',
     },
     face: {
       flex: 1,
@@ -100,7 +98,7 @@ const MultipleChoice = () => {
   });
 
   return (
-    <View className="h-full pt-8">
+    <View className="h-full pt-12 rounded-lg shadow-sm shadow-gray-400">
       <FlipCard
         style={styles.card}
         flip={isFlipped}
@@ -113,11 +111,11 @@ const MultipleChoice = () => {
       >
         <View
           style={styles.face}
-          className="max-w-[90vw] w-[90vw] p-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
+          className="max-w-[90vw] w-[90vw]"
         >
           
-            <Text className='absolute p-2 top-4'>
-              <Text className="text-6xl text-center">😼</Text>
+            <Text className='absolute p-2 top-10'>
+              <Text className="text-6xl text-center">{imageSources[currentImageIndex]}</Text>
               {'\n'}
               <Text className="text-xl">{randomSentence}?</Text>
             </Text>
@@ -128,7 +126,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.A,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('A')}
             >
               <Text>
@@ -141,7 +139,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.B,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('B')}
             >
               <Text>
@@ -154,7 +152,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.C,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('C')}
             >
               <Text>
@@ -167,7 +165,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.D,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('D')}
             >
               <Text>
@@ -183,7 +181,7 @@ const MultipleChoice = () => {
           style={styles.back}
           className="max-w-[90vw] w-[90vw] rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          <Text className="absolute p-2 top-4">
+          <Text className="absolute p-2 top-10">
             <Text className="text-6xl text-center">😺</Text>
             {'\n'}
             <Text className="text-4xl text-center">Correct!</Text>

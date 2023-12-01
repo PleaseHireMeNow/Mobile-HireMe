@@ -10,7 +10,7 @@ export default function Page() {
   const { user, exampleName } = useContext(UserContext) as IUserContext; // annotation is required for typescript
 
   return (
-    <View className="items-center justify-around flex-1 bg-sunglow-300">
+    <View className="items-center justify-around flex-1">
       <View>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
