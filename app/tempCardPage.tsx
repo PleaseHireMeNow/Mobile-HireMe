@@ -3,7 +3,7 @@ import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 export default function TempCardPage() {
   return (
-    <HeaderWrapper>
+    <HeaderWrapper dropdown disableBack>
       <MultipleChoice />
     </HeaderWrapper>
   );
