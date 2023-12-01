@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { View, ScrollView } from 'react-native';
 import DevIcons from '../../../constants/DevIcons';
 import TopicItem from './TopicItem';

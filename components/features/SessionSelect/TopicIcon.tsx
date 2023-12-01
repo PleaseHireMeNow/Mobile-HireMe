@@ -1,14 +1,14 @@
 import { useContext } from 'react';
-import {
-  SessionFormContext,
-  ISessionFormContext,
-} from '../../../context/SessionFormContext';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { DevIcon } from '../../../constants/DevIcons';
+import {
+  ISessionFormContext,
+  SessionFormContext,
+} from '../../../context/SessionFormContext';
 
 interface TopicItemProps {
   Icon: DevIcon;
