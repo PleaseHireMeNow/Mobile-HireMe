@@ -1,9 +1,10 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import React, { useState, useMemo } from 'react';
-import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
-import MainButton from '../Buttons/MainButton';
+import MainButton from '../components/ui/Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
+import QuestionRating from '../components/ui/QuestionRating/QuestionRating';
+import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 const initialColorState = {
   A: 'white',
@@ -14,7 +15,7 @@ const initialColorState = {
 
 const MultipleChoice = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [_, setSelectAnswer] = useState('');
+  const [selectAnswer, setSelectAnswer] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(initialColorState);
 
@@ -60,22 +61,19 @@ const MultipleChoice = () => {
   const styles = StyleSheet.create({
     card: {
       flex: 1,
-      backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingBottom: 20,
+      paddingBottom: 105,
+      paddingTop: 10,
       flexWrap: 'wrap',
-      maxHeight: '80%',
     },
     face: {
       flex: 1,
-      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },
     back: {
       flex: 1,
-      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -85,7 +83,7 @@ const MultipleChoice = () => {
   });
 
   return (
-    <View className="h-full pt-8">
+    <HeaderWrapper>
       <FlipCard
         style={styles.card}
         flip={isFlipped}
@@ -98,14 +96,13 @@ const MultipleChoice = () => {
       >
         <View
           style={styles.face}
-          className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
+          className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
-          <Text className="absolute top-4 p-2">
+          <Text className="absolute top-6 p-2">
             <Text className="text-6xl text-center">😼</Text>
             {'\n'}
-            <Text className="text-xl">{randomSentence}?</Text>
+            <Text className="text-base">{randomSentence}?</Text>
           </Text>
-
           <View className="absolute bottom-20">
             <Pressable
               style={{
@@ -162,30 +159,23 @@ const MultipleChoice = () => {
           </View>
           <MainButton text="Submit" onPress={handleSubmit} />
         </View>
-
         <View
           style={styles.back}
-          className="max-w-[90vw] w-[90vw] rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
+          className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
-          <Text className=" absolute top-4 p-2">
+          <Text className=" absolute top-6 p-2">
             <Text className="text-center text-6xl">😺</Text>
             {'\n'}
             <Text className="text-center text-4xl">Correct!</Text>
           </Text>
-
           <View className="p-4">
-            <Text className="text-xl">{correctAnswer}</Text>
+            <Text className="text-lg">{correctAnswer}</Text>
           </View>
-          <Link
-            className="text-md mt-16 font-semibold text-blue-500 active:scale-105"
-            href="/"
-          >
-            Rate this question
-          </Link>
+          <QuestionRating />
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
-    </View>
+    </HeaderWrapper>
   );
 };
 export default MultipleChoice;
