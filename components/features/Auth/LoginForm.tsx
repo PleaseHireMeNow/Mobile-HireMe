@@ -4,8 +4,6 @@ import { Link } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import AuthButton from '../../ui/Buttons/AuthButton';
-import TopTab from '../../ui/Navigation/TopTab';
-import HeaderWrapper from '../../ui/Navigation/HeaderWrapper';
 
 export default function LoginForm() {
   const [username, setUsername] = useState<string>('');

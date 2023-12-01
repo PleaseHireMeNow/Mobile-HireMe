@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import LoginForm from '../components/features/Auth/LoginForm';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 

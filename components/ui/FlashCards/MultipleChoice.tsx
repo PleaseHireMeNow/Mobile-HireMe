@@ -14,7 +14,7 @@ const initialColorState = {
 
 const MultipleChoice = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [selectAnswer, setSelectAnswer] = useState('');
+  const [_, setSelectAnswer] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(initialColorState);
 

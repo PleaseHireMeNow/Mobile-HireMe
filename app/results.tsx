@@ -1,6 +1,5 @@
-import { Text, View, StyleSheet, Pressable, Share } from 'react-native';
-import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
+import { Text, View } from 'react-native';
 import MainButton from '../components/ui/Buttons/MainButton';
 import ShareButton from '../components/ui/Buttons/ShareButton';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';

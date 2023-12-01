@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import MultipleChoice from '../components/ui/FlashCards/MultipleChoice';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 

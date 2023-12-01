@@ -1,4 +1,3 @@
-import { View } from 'react-native';
 import SignupForm from '../components/features/Auth/SignupForm';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
