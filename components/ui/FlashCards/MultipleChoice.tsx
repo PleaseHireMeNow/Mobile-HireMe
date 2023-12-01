@@ -4,6 +4,7 @@ import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
 import MainButton from '../Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
+import QuestionRating from '../../features/Requests/QuestionRating';
 
 const initialColorState = {
   A: 'white',
@@ -48,15 +49,15 @@ const MultipleChoice = () => {
     setBackgroundColor(initialColorState);
   };
 
-  const handleSelectAnswer = (selectAnswer: string) => { 
-    setSelectAnswer(selectAnswer); 
-    setBackgroundColor(initialColorState); 
-    setBackgroundColor((prevColors) => ({ 
-      ...prevColors, 
+  const handleSelectAnswer = (selectAnswer: string) => {
+    setSelectAnswer(selectAnswer);
+    setBackgroundColor(initialColorState);
+    setBackgroundColor((prevColors) => ({
+      ...prevColors,
       [selectAnswer]: '#ffee87',
     }));
   };
- 
+
   const styles = StyleSheet.create({
     card: {
       flex: 1,
@@ -98,20 +99,19 @@ const MultipleChoice = () => {
         // perspective={1000} // lower number = more flat
         flipHorizontal={true}
         flipVertical={false}
-        clickable={false} 
+        clickable={false}
         //onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
       >
         <View
           style={styles.face}
           className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          
-            <Text className='absolute top-4 p-2'>
-              <Text className="text-6xl text-center">😼</Text>
-              {'\n'}
-              <Text className="text-xl">{randomSentence}?</Text>
-            </Text>
-          
+          <Text className="absolute top-4 p-2">
+            <Text className="text-6xl text-center">😼</Text>
+            {'\n'}
+            <Text className="text-xl">{randomSentence}?</Text>
+          </Text>
+
           <View className="absolute bottom-20">
             <Pressable
               style={{
@@ -182,12 +182,7 @@ const MultipleChoice = () => {
           <View className="p-4">
             <Text className="text-xl">{correctAnswer}</Text>
           </View>
-          <Link
-            className="text-md mt-16 font-semibold text-blue-500 active:scale-105"
-            href="/"
-          >
-            Rate this question
-          </Link>
+          <QuestionRating />
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
