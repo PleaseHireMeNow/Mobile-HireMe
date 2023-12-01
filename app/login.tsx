@@ -1,10 +1,11 @@
 import { View } from 'react-native';
 import LoginForm from '../components/features/Auth/LoginForm';
+import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 export default function LogInPage() {
   return (
-    <View className="">
+    <HeaderWrapper>
       <LoginForm />
-    </View>
+    </HeaderWrapper>
   );
 }

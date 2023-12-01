@@ -10,11 +10,7 @@ export default function Layout() {
   return (
     <UserContextProvider>
       <SessionFormContextProvider>
-        <View
-          style={{ backgroundColor: '#ffdd43' }}
-          className="flex pt-20 px-8 items-center flex-1"
-        >
-          <TopTab />
+        <View className="flex pt-20 items-center flex-1 bg-sunglow-300">
           <Slot />
         </View>
       </SessionFormContextProvider>
