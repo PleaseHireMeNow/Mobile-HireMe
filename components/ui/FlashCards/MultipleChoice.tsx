@@ -14,7 +14,7 @@ const initialColorState = {
 
 const MultipleChoice = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [selectAnswer, setSelectAnswer] = useState('');
+  const [_, setSelectAnswer] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState(initialColorState);
 
@@ -48,15 +48,15 @@ const MultipleChoice = () => {
     setBackgroundColor(initialColorState);
   };
 
-  const handleSelectAnswer = (selectAnswer: string) => { 
-    setSelectAnswer(selectAnswer); 
-    setBackgroundColor(initialColorState); 
-    setBackgroundColor((prevColors) => ({ 
-      ...prevColors, 
+  const handleSelectAnswer = (selectAnswer: string) => {
+    setSelectAnswer(selectAnswer);
+    setBackgroundColor(initialColorState);
+    setBackgroundColor((prevColors) => ({
+      ...prevColors,
       [selectAnswer]: '#ffee87',
     }));
   };
- 
+
   const styles = StyleSheet.create({
     card: {
       flex: 1,
@@ -65,6 +65,7 @@ const MultipleChoice = () => {
       justifyContent: 'center',
       paddingBottom: 20,
       flexWrap: 'wrap',
+      maxHeight: '80%',
     },
     face: {
       flex: 1,
@@ -84,13 +85,7 @@ const MultipleChoice = () => {
   });
 
   return (
-    <>
-      <Link
-        className="text-lg font-semibold text-blue-500 active:scale-105"
-        href="/"
-      >
-        Home
-      </Link>
+    <View className="h-full pt-8">
       <FlipCard
         style={styles.card}
         flip={isFlipped}
@@ -98,20 +93,19 @@ const MultipleChoice = () => {
         // perspective={1000} // lower number = more flat
         flipHorizontal={true}
         flipVertical={false}
-        clickable={false} 
+        clickable={false}
         //onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}
       >
         <View
           style={styles.face}
           className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
         >
-          
-            <Text className='absolute top-4 p-2'>
-              <Text className="text-6xl text-center">😼</Text>
-              {'\n'}
-              <Text className="text-xl">{randomSentence}?</Text>
-            </Text>
-          
+          <Text className="absolute top-4 p-2">
+            <Text className="text-6xl text-center">😼</Text>
+            {'\n'}
+            <Text className="text-xl">{randomSentence}?</Text>
+          </Text>
+
           <View className="absolute bottom-20">
             <Pressable
               style={{
@@ -191,7 +185,7 @@ const MultipleChoice = () => {
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
-    </>
+    </View>
   );
 };
 export default MultipleChoice;

@@ -1,10 +1,10 @@
-import { View } from 'react-native';
 import SignupForm from '../components/features/Auth/SignupForm';
+import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 export default function SignUpPage() {
   return (
-    <View className="">
+    <HeaderWrapper>
       <SignupForm />
-    </View>
+    </HeaderWrapper>
   );
 }

@@ -1,10 +1,10 @@
-import { View } from 'react-native';
 import MultipleChoice from '../components/ui/FlashCards/MultipleChoice';
+import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 export default function TempCardPage() {
   return (
-    <View>
+    <HeaderWrapper dropdown disableBack>
       <MultipleChoice />
-    </View>
+    </HeaderWrapper>
   );
 }
