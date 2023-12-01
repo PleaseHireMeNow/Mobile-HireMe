@@ -2,9 +2,9 @@ import { Text, View, StyleSheet, Pressable } from 'react-native';
 import React, { useState, useMemo } from 'react';
 import { Link } from 'expo-router';
 import { faker } from '@faker-js/faker';
-import MainButton from '../Buttons/MainButton';
+import MainButton from '../components/ui/Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
-import QuestionRating from '../../features/Requests/QuestionRating';
+import QuestionRating from '../components/ui/QuestionRating/QuestionRating';
 
 const initialColorState = {
   A: 'white',
@@ -85,7 +85,7 @@ const MultipleChoice = () => {
   });
 
   return (
-    <>
+    <View>
       <Link
         className="text-lg font-semibold text-blue-500 active:scale-105"
         href="/"
@@ -104,12 +104,12 @@ const MultipleChoice = () => {
       >
         <View
           style={styles.face}
-          className="max-w-[90vw] w-[90vw] p-2 my-2 rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
+          className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
           <Text className="absolute top-4 p-2">
             <Text className="text-6xl text-center">😼</Text>
             {'\n'}
-            <Text className="text-xl">{randomSentence}?</Text>
+            <Text className="text-lg">{randomSentence}?</Text>
           </Text>
 
           <View className="absolute bottom-20">
@@ -171,7 +171,7 @@ const MultipleChoice = () => {
 
         <View
           style={styles.back}
-          className="max-w-[90vw] w-[90vw] rounded-lg border-solid border-gray-300 border-[1px] shadow-xl"
+          className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
           <Text className=" absolute top-4 p-2">
             <Text className="text-center text-6xl">😺</Text>
@@ -186,7 +186,7 @@ const MultipleChoice = () => {
           <MainButton text="Next" onPress={handleNextButton} />
         </View>
       </FlipCard>
-    </>
+    </View>
   );
 };
 export default MultipleChoice;

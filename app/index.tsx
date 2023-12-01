@@ -38,9 +38,9 @@ export default function Page() {
         </Link>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
-          href="/tempCardPage"
+          href="/MultipleChoice"
         >
-          Temp Card Page
+          Flashcard
         </Link>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
