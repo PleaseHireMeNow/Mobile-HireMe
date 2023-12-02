@@ -10,7 +10,7 @@ export default function MainButton({ onPress, text }: ButtonProps) {
   return (
     <Pressable 
       onPress={onPress} 
-      className="bg-white rounded-xl border-black border-[1px] px-4 py-2 my-1 absolute bottom-4">
+      className="absolute px-4 py-2 my-1 bg-white shadow-sm rounded-xl bottom-4 shadow-gray-500 active:border-[1px] active:border-gray-300">
       
       <Text className="text-base font-semibold text-black capitalize ">{text}</Text>
     </Pressable>

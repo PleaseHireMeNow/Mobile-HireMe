@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <UserContextProvider>
       <SessionFormContextProvider>
-        <View className="flex pt-20 items-center flex-1 bg-sunglow-300">
+        <View className="flex items-center flex-1 pt-20 bg-sunglow-400">
           <Slot />
         </View>
       </SessionFormContextProvider>

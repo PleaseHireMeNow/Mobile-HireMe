@@ -22,7 +22,7 @@ export default function HeaderWrapper({
     router.back();
   };
   return (
-    <View className="flex flex-col gap-y-2 w-full items-center">
+    <View className="flex flex-col items-center w-full shadow-sm gap-y-2 shadow-gray-400 ">
       {/* Header */}
       <View className={`flex w-full px-8 flex-row justify-between ml-2 `}>
         <Pressable onPress={handleBack} disabled={!canGoBack}>
@@ -46,7 +46,7 @@ export default function HeaderWrapper({
         </Link>
       </View>
       {/* Wrapper  */}
-      <View className="w-full h-full px-8 flex items-center bg-sunglow-400">
+      <View className="flex items-center w-full h-full px-8 shadow-sm bg-sunglow-300 shadow-gray-400">
         {children}
       </View>
     </View>

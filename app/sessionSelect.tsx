@@ -7,11 +7,11 @@ import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 export default function SessionSelectPage() {
   return (
     <HeaderWrapper>
-      <View className="w-full pt-4 gap-y-4 flex-1">
-        <View className="gap-y-6 shadow-sm shadow-gray-500  flex items-center rounded-3xl bg-white">
+      <View className="flex-1 w-full pt-7 gap-y-4">
+        <View className="flex items-center bg-white shadow-sm gap-y-6 shadow-gray-400 rounded-3xl">
           <View className="flex flex-col items-center justify-center">
             <Text className="text-2xl font-bold">Select a topic</Text>
-            <Text className="text-sm font-semibold mt-2 text-gray-500">
+            <Text className="mt-2 text-sm font-semibold text-gray-500">
               Select a topic to start a session
             </Text>
           </View>

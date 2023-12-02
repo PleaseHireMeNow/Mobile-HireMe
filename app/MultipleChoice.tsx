@@ -1,10 +1,12 @@
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Image } from 'react-native';
 import React, { useState, useMemo } from 'react';
 import { faker } from '@faker-js/faker';
 import MainButton from '../components/ui/Buttons/MainButton';
 import FlipCard from 'react-native-flip-card';
 import QuestionRating from '../components/ui/QuestionRating/QuestionRating';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
+
+const imageSources = ['🐶', '🐱'];
 
 const initialColorState = {
   A: 'white',
@@ -14,6 +16,12 @@ const initialColorState = {
 };
 
 const MultipleChoice = () => {
+  // Image randomization
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const getRandomImage = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageSources.length);
+  };
+
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectAnswer, setSelectAnswer] = useState('');
   const [nextButtonPressed, setNextButtonPressed] = useState(false);
@@ -47,6 +55,7 @@ const MultipleChoice = () => {
     setIsFlipped(!isFlipped);
     setNextButtonPressed(!nextButtonPressed); // Toggle the state to trigger useMemo recalculation
     setBackgroundColor(initialColorState);
+    getRandomImage(); // Toggle the image
   };
 
   const handleSelectAnswer = (selectAnswer: string) => {
@@ -63,8 +72,8 @@ const MultipleChoice = () => {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingBottom: 105,
-      paddingTop: 10,
+      paddingBottom: 120,
+      paddingTop: 30,
       flexWrap: 'wrap',
     },
     face: {
@@ -96,10 +105,10 @@ const MultipleChoice = () => {
       >
         <View
           style={styles.face}
-          className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
+          className="w-[85vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
-          <Text className="absolute top-6 p-2">
-            <Text className="text-6xl text-center">😼</Text>
+          <Text className="absolute p-2 top-6">
+          <Text className="text-6xl text-center">{imageSources[currentImageIndex]}</Text>
             {'\n'}
             <Text className="text-base">{randomSentence}?</Text>
           </Text>
@@ -109,7 +118,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.A,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('A')}
             >
               <Text>
@@ -122,7 +131,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.B,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('B')}
             >
               <Text>
@@ -135,7 +144,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.C,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('C')}
             >
               <Text>
@@ -148,7 +157,7 @@ const MultipleChoice = () => {
                 ...styles.pressable,
                 backgroundColor: backgroundColor.D,
               }}
-              className="max-w-[80vw] w-[80vw] p-2 my-2 rounded-lg border-solid border-black border-[1px]"
+              className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
               onPress={() => handleSelectAnswer('D')}
             >
               <Text>
@@ -163,10 +172,10 @@ const MultipleChoice = () => {
           style={styles.back}
           className="w-[90vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
-          <Text className=" absolute top-6 p-2">
-            <Text className="text-center text-6xl">😺</Text>
+          <Text className="absolute p-2 top-6">
+            <Text className="text-6xl text-center">😺</Text>
             {'\n'}
-            <Text className="text-center text-4xl">Correct!</Text>
+            <Text className="text-4xl text-center">Correct!</Text>
           </Text>
           <View className="p-4">
             <Text className="text-lg">{correctAnswer}</Text>
