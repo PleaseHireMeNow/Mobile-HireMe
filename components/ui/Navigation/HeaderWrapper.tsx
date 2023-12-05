@@ -24,7 +24,7 @@ export default function HeaderWrapper({
   return (
     <View className="flex flex-col items-center w-full shadow-sm gap-y-2 shadow-gray-400 ">
       {/* Header */}
-      <View className={`flex w-full px-8 flex-row justify-between ml-2 `}>
+      <View className={`flex w-full z-50 px-8 flex-row justify-between ml-2 `}>
         <Pressable onPress={handleBack} disabled={!canGoBack}>
           {/* If we cannot go back make the button invisible by making it the same color as the bg */}
           {/* We still want it to take space on the page so that justify between works correctly */}
