@@ -14,12 +14,6 @@ export default function Page() {
       <View>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
-          href="/about"
-        >
-          About
-        </Link>
-        <Link
-          className="text-lg font-semibold text-blue-500 rounded-lg"
           href="/signup"
         >
           Sign Up
@@ -45,9 +39,9 @@ export default function Page() {
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
           href="/results"
-          >
+        >
           Results Page
-          </Link>
+        </Link>
         <Link href="/sessionSelect">
           <Text className="text-lg font-semibold text-blue-500 rounded-lg">
             Session Select
