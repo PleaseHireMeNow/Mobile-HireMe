@@ -3,8 +3,31 @@ import TopicList from '../components/features/SessionSelect/TopicList';
 import DifficultySelect from '../components/features/SessionSelect/DifficultySelect';
 import WideButton from '../components/ui/Buttons/WideButton';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
+import { useContext } from 'react';
+import {
+  ISessionFormContext,
+  SessionFormContext,
+} from '../context/SessionFormContext';
+import agent from '../api/agent';
 
 export default function SessionSelectPage() {
+  const { selectedTopic, selectedDifficulty } = useContext(
+    SessionFormContext
+  ) as ISessionFormContext;
+
+  const onSubmit = async () => {
+    console.log('submitting');
+    // post stack choice with difficulty
+    if (!selectedTopic || !selectedDifficulty) return;
+
+    await agent.StackSelect.create('string1', {
+      stack: selectedTopic,
+      difficulty: selectedDifficulty,
+    });
+
+    const questions = await agent.Questions.get('string1');
+  };
+
   return (
     <HeaderWrapper>
       <View className="flex-1 w-full pt-7 gap-y-4">
@@ -20,7 +43,11 @@ export default function SessionSelectPage() {
         <View className="mb-4">
           <DifficultySelect />
         </View>
-        <WideButton color="primary" text="START" />
+        <WideButton
+          color="primary"
+          text="START"
+          isDisabled={!selectedTopic || !selectedDifficulty}
+        />
       </View>
     </HeaderWrapper>
   );
