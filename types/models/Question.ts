@@ -1,7 +1,9 @@
+export interface AnswerContent {
+  text: string;
+}
+
 export interface Answer {
-  answerContent: {
-    text: string;
-  };
+  answerContent: AnswerContent;
   isCorrect: boolean;
 }
 
