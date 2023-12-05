@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import MainButton from '../components/ui/Buttons/MainButton';
 import SecondaryButton from '../components/ui/Buttons/SecondaryButton';
 import AuthButton from '../components/ui/Buttons/AuthButton';
+import { router } from 'expo-router';
 
 export default function Page() {
   const { user, exampleName } = useContext(UserContext) as IUserContext; // annotation is required for typescript
@@ -54,7 +55,10 @@ export default function Page() {
         </Text>
         <Text className="text-green-700">{exampleName} FROM USE CONTEXT</Text>
       </View>
-      <SecondaryButton text="big round" onPress={() => alert('I am round')} />
+      <SecondaryButton
+        text="start user flow"
+        onPress={() => router.push('/signup')}
+      />
       <AuthButton text="Log In" onPress={() => alert('Test Test')} />
       <MainButton text="PRESS ME" onPress={() => alert('HI THERE')} />
     </View>
