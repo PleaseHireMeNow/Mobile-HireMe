@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Pressable, Image } from 'react-native';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import React, { useState, useMemo } from 'react';
 import { faker } from '@faker-js/faker';
 import MainButton from '../components/ui/Buttons/MainButton';
@@ -108,7 +108,9 @@ const MultipleChoice = () => {
           className="w-[85vw] shadow-sm shadow-gray-500 flex items-center rounded-3xl bg-white p-2"
         >
           <Text className="absolute p-2 top-6">
-          <Text className="text-6xl text-center">{imageSources[currentImageIndex]}</Text>
+            <Text className="text-6xl text-center">
+              {imageSources[currentImageIndex]}
+            </Text>
             {'\n'}
             <Text className="text-base">{randomSentence}?</Text>
           </Text>

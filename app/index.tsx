@@ -33,7 +33,7 @@ export default function Page() {
         </Link>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
-          href="/MultipleChoice"
+          href="/multipleChoice"
         >
           Flashcard
         </Link>

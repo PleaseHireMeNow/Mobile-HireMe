@@ -9,11 +9,19 @@ import {
   SessionFormContext,
 } from '../context/SessionFormContext';
 import agent from '../api/agent';
+import {
+  CurrentSessionContext,
+  ICurrentSessionContext,
+} from '../context/CurrentSessionContext';
+import { router } from 'expo-router';
 
 export default function SessionSelectPage() {
   const { selectedTopic, selectedDifficulty } = useContext(
     SessionFormContext
   ) as ISessionFormContext;
+  const { setQuestions } = useContext(
+    CurrentSessionContext
+  ) as ICurrentSessionContext;
 
   const onSubmit = async () => {
     console.log('submitting');
@@ -26,6 +34,8 @@ export default function SessionSelectPage() {
     });
 
     const questions = await agent.Questions.get('string1');
+    setQuestions(questions);
+    router.push('/multipleChoice');
   };
 
   return (
@@ -44,6 +54,7 @@ export default function SessionSelectPage() {
           <DifficultySelect />
         </View>
         <WideButton
+          onPress={onSubmit}
           color="primary"
           text="START"
           isDisabled={!selectedTopic || !selectedDifficulty}
