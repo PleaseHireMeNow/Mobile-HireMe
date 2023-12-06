@@ -4,7 +4,7 @@ import MainButton from '../components/ui/Buttons/MainButton';
 import ShareButton from '../components/ui/Buttons/ShareButton';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 import { router } from 'expo-router';
-import { useContext, useMemo } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import {
   CurrentSessionContext,
   ICurrentSessionContext,
@@ -22,8 +22,11 @@ export default function ResultsPage() {
     }
     const totalQuestions = currentScore.incorrect + currentScore.correct;
     const score = (currentScore.correct / totalQuestions) * 100;
-    setCurrentScore({ correct: 0, incorrect: 0 }); // reset score
     return Math.round(score);
+  }, []);
+
+  useEffect(() => {
+    setCurrentScore({ correct: 0, incorrect: 0 }); // reset score
   }, []);
 
   const randomPercentNumber = faker.number.int({ min: 10, max: 96 });
