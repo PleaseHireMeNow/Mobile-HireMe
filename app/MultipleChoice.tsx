@@ -12,13 +12,16 @@ import { Link, router } from 'expo-router';
 
 const imageSources = ['🐶', '🐱'];
 
-type AnswerLetter = 'A' | 'B' | 'C' | 'D';
+type AnswerLetter = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G';
 
 const initialColorState: Record<AnswerLetter, string> = {
   A: 'white',
   B: 'white',
   C: 'white',
   D: 'white',
+  E: 'white',
+  F: 'white',
+  G: 'white',
 };
 
 const MultipleChoice = () => {
@@ -128,7 +131,7 @@ const MultipleChoice = () => {
           </Text>
           <View className="absolute bottom-20">
             {currentQuestion['question-content'].answers.map((answer, i) => {
-              const answerLetter = ['A', 'B', 'C', 'D'][i];
+              const answerLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G'][i];
               return (
                 <Pressable
                   key={i}
