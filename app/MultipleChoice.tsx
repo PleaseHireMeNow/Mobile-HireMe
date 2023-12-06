@@ -102,7 +102,7 @@ const MultipleChoice = () => {
   };
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper disableBack>
       <FlipCard
         style={styles.card}
         flip={isFlipped}

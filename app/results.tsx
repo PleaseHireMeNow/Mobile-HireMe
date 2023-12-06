@@ -22,8 +22,8 @@ export default function ResultsPage() {
     }
     const totalQuestions = currentScore.incorrect + currentScore.correct;
     const score = (currentScore.correct / totalQuestions) * 100;
-    setCurrentScore({ correct: 0, incorrect: 0 });
-    return Math.ceil(score);
+    setCurrentScore({ correct: 0, incorrect: 0 }); // reset score
+    return Math.round(score);
   }, []);
 
   const randomPercentNumber = faker.number.int({ min: 10, max: 96 });
