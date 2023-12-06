@@ -12,6 +12,12 @@ export default function Page() {
   return (
     <View className="items-center justify-around flex-1">
       <View>
+      <Link
+          className="text-lg font-semibold text-blue-500 rounded-lg"
+          href="/dropdown"
+        >
+          Dropdown
+        </Link>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
           href="/about"
@@ -48,7 +54,7 @@ export default function Page() {
           >
           Results Page
           </Link>
-        <Link href="/sessionSelect">
+        <Link href="/sessionSelect">    
           <Text className="text-lg font-semibold text-blue-500 rounded-lg">
             Session Select
           </Text>
