@@ -1,4 +1,4 @@
 export interface NewSessionDto {
   topic: string;
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  difficulty: 'Easy' | 'Med' | 'Hard' | 'Pro';
 }
