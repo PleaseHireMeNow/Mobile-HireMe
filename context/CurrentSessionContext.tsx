@@ -7,14 +7,18 @@ import {
 } from 'react';
 import { Question } from '../types/models/Question';
 
+export type Score = { correct: number; incorrect: number };
+
 /*
  * Interface for typescript
  */
 export interface ICurrentSessionContext {
   questions: Question[] | null;
   setQuestions: Dispatch<SetStateAction<Question[] | null>>;
-  currentQuestion: number;
-  setCurrentQuestion: Dispatch<SetStateAction<number>>;
+  currentQuestionIndex: number;
+  setCurrentQuestionIndex: Dispatch<SetStateAction<number>>;
+  currentScore: Score;
+  setCurrentScore: Dispatch<SetStateAction<Score>>;
 }
 
 /*
@@ -23,8 +27,10 @@ export interface ICurrentSessionContext {
 export const CurrentSessionContext = createContext<ICurrentSessionContext>({
   questions: null,
   setQuestions: () => {},
-  currentQuestion: 0,
-  setCurrentQuestion: () => {},
+  currentQuestionIndex: 0,
+  setCurrentQuestionIndex: () => {},
+  currentScore: { correct: 0, incorrect: 0 },
+  setCurrentScore: () => {},
 });
 
 /*
@@ -34,15 +40,21 @@ export const CurrentSessionContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
   const [questions, setQuestions] = useState<Question[] | null>(null);
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [currentScore, setCurrentScore] = useState({
+    correct: 0,
+    incorrect: 0,
+  });
 
   return (
     <CurrentSessionContext.Provider
       value={{
         questions,
         setQuestions,
-        currentQuestion,
-        setCurrentQuestion,
+        currentQuestionIndex,
+        setCurrentQuestionIndex,
+        currentScore,
+        setCurrentScore,
       }}
     >
       {children}

@@ -16,16 +16,17 @@ import {
 import { router } from 'expo-router';
 
 export default function SessionSelectPage() {
-  const { selectedTopic, selectedDifficulty } = useContext(
-    SessionFormContext
-  ) as ISessionFormContext;
+  const {
+    selectedTopic,
+    setSelectedTopic,
+    selectedDifficulty,
+    setSelectedDifficulty,
+  } = useContext(SessionFormContext) as ISessionFormContext;
   const { setQuestions } = useContext(
     CurrentSessionContext
   ) as ICurrentSessionContext;
 
   const onSubmit = async () => {
-    console.log('submitting');
-    // post stack choice with difficulty
     if (!selectedTopic || !selectedDifficulty) return;
 
     await agent.StackSelect.create('string1', {
@@ -34,7 +35,14 @@ export default function SessionSelectPage() {
     });
 
     const questions = await agent.Questions.get('string1');
-    setQuestions(questions);
+    // reset form
+    setSelectedDifficulty(null);
+    setSelectedTopic('');
+    // console.log(
+    //   questions.forEach((q) => console.log(q['question-content'].answers))
+    // );
+    // TODO: remove the slice when we are done developing
+    setQuestions(questions.slice(0, 3));
     router.push('/multipleChoice');
   };
 
