@@ -3,8 +3,49 @@ import TopicList from '../components/features/SessionSelect/TopicList';
 import DifficultySelect from '../components/features/SessionSelect/DifficultySelect';
 import WideButton from '../components/ui/Buttons/WideButton';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
+import { useContext } from 'react';
+import {
+  ISessionFormContext,
+  SessionFormContext,
+} from '../context/SessionFormContext';
+import agent from '../api/agent';
+import {
+  CurrentSessionContext,
+  ICurrentSessionContext,
+} from '../context/CurrentSessionContext';
+import { router } from 'expo-router';
 
 export default function SessionSelectPage() {
+  const {
+    selectedTopic,
+    setSelectedTopic,
+    selectedDifficulty,
+    setSelectedDifficulty,
+  } = useContext(SessionFormContext) as ISessionFormContext;
+  const { setQuestions } = useContext(
+    CurrentSessionContext
+  ) as ICurrentSessionContext;
+
+  const onSubmit = async () => {
+    if (!selectedTopic || !selectedDifficulty) return;
+
+    await agent.StackSelect.create('string1', {
+      stack: selectedTopic,
+      difficulty: selectedDifficulty,
+    });
+
+    const questions = await agent.Questions.get('string1');
+    // reset form
+    setSelectedDifficulty(null);
+    setSelectedTopic('');
+    // console.log(
+    //   questions.forEach((q) => console.log(q['question-content'].answers))
+    // );
+    // TODO: remove the slice when we are done developing
+    setQuestions(questions.slice(0, 3));
+    router.push('/multipleChoice');
+  };
+
   return (
     <HeaderWrapper>
       <View className="flex-1 w-full pt-7 gap-y-4">
@@ -20,7 +61,12 @@ export default function SessionSelectPage() {
         <View className="mb-4">
           <DifficultySelect />
         </View>
-        <WideButton color="primary" text="START" />
+        <WideButton
+          onPress={onSubmit}
+          color="primary"
+          text="START"
+          isDisabled={!selectedTopic || !selectedDifficulty}
+        />
       </View>
     </HeaderWrapper>
   );

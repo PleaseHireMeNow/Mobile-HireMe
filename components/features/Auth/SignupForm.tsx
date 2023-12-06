@@ -3,6 +3,7 @@ import { TextInput, Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import AuthButton from '../../ui/Buttons/AuthButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { router } from 'expo-router';
 
 export default function SignupForm() {
   const [email, setEmail] = useState<string>('');
@@ -11,6 +12,7 @@ export default function SignupForm() {
 
   const handleSignup = () => {
     // form submission logic here
+    router.push('/sessionSelect');
     console.log(username);
   };
 

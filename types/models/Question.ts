@@ -1,8 +1,10 @@
+export interface AnswerContent {
+  text: string;
+}
+
 export interface Answer {
-  answerContent: {
-    text: string;
-  };
-  isCorrect: boolean;
+  'answer-content': AnswerContent;
+  'is-correct': boolean;
 }
 
 export interface Response {
@@ -18,8 +20,8 @@ export interface QuestionContent {
 }
 
 export interface Question {
-  questionId: string;
-  questionContent: QuestionContent;
+  'question-id': string;
+  'question-content': QuestionContent;
 }
 
 export interface CompletedQuestion extends Question {
