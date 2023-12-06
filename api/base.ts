@@ -3,9 +3,12 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 /*
  * This could change, but basic setup for axios
  */
+const inDev = __DEV__;
 
 // set default base
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = inDev
+  ? 'http://localhost:3000/api'
+  : 'https://hireme.com/api'; // will need to change
 // parse data from response
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 

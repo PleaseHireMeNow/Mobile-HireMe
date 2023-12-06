@@ -4,6 +4,7 @@ interface ButtonProps {
   onPress?: () => void;
   text: string;
   color: 'primary' | 'secondary' | 'tertiary';
+  isDisabled?: boolean;
 }
 
 const getBgColor = (color: string) => {
@@ -32,14 +33,22 @@ const getTextColor = (color: string) => {
   }
 };
 
-export default function WideButton({ onPress, text, color }: ButtonProps) {
+export default function WideButton({
+  onPress,
+  text,
+  color,
+  isDisabled,
+}: ButtonProps) {
   const bgColor = getBgColor(color);
   const textColor = getTextColor(color);
 
   return (
     <Pressable
-      className={`bg-white active:scale-105 ${bgColor} shadow-sm rounded-xl px-8 py-4  flex items-center justify-center`}
+      className={`bg-white active:scale-105 ${
+        isDisabled ? 'bg-gray-500' : bgColor
+      } shadow-sm rounded-xl px-8 py-4  flex items-center justify-center`}
       onPress={onPress}
+      disabled={isDisabled}
     >
       <Text className={`shadow-md text-lg font-bold ${textColor}`}>{text}</Text>
     </Pressable>

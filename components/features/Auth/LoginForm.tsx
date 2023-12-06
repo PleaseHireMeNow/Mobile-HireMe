@@ -4,6 +4,7 @@ import { Link } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import AuthButton from '../../ui/Buttons/AuthButton';
+import { router } from 'expo-router';
 
 export default function LoginForm() {
   const [username, setUsername] = useState<string>('');
@@ -12,6 +13,7 @@ export default function LoginForm() {
   const handleLogin = () => {
     // form submission logic here
     console.log(username);
+    router.push('/sessionSelect');
   };
 
   return (
