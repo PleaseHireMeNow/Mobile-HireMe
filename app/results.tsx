@@ -33,7 +33,7 @@ export default function ResultsPage() {
   const randomMinutesNumber = faker.number.int({ min: 4, max: 22 });
 
   return (
-    <HeaderWrapper disableBack>
+    <HeaderWrapper dropdown disableBack>
       <View className="justify-center items-center bottom-24 h-full w-[100vw]">
         <Text className="text-center shadow-sm text-8xl shadow-white">
           <Image

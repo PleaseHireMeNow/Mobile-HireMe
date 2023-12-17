@@ -1,30 +1,34 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { Dropdown } from 'react-native-element-dropdown';
-import { dropdownData } from './DropdownData';
+import { Dropdown as NativeDropdown } from 'react-native-element-dropdown';
+import { DropdownItem } from '../../../types/models/DropdownData';
 
-export default function DropdownComponent() {
+interface DropdownProps {
+  dropdownData: DropdownItem[];
+}
+
+export default function Dropdown({ dropdownData }: DropdownProps) {
   const [value, setValue] = useState<string | null>(null);
 
   const handleItemPress = (itemValue: string, onPress: () => void) => {
     setValue(itemValue);
     onPress();
-    
-   // Handle actions based on the selected item
-   if (itemValue === 'Home') {
-    // Handle the Home action here or navigate to the Home screen
-  } else if (itemValue === 'About') {
-    // Handle the About action
-  } else if (itemValue === 'Contact') {
-    // Handle the Contact action
-  } else if (itemValue === 'Logout') {
-    // Handle the Logout action
-  }
-};
+
+    // Handle actions based on the selected item
+    if (itemValue === 'Home') {
+      // Handle the Home action here or navigate to the Home screen
+    } else if (itemValue === 'About') {
+      // Handle the About action
+    } else if (itemValue === 'Contact') {
+      // Handle the Contact action
+    } else if (itemValue === 'Logout') {
+      // Handle the Logout action
+    }
+  };
 
   return (
-    <Dropdown
+    <NativeDropdown
       style={styles.dropdown}
       placeholderStyle={styles.placeholderStyle}
       selectedTextStyle={styles.selectedTextStyle}
@@ -40,12 +44,7 @@ export default function DropdownComponent() {
       value={value}
       onChange={(item) => handleItemPress(item.label, item.value.onPress)}
       renderLeftIcon={() => (
-        <AntDesign
-          style={styles.icon}
-          color="black"
-          name="Safety"
-          size={20}
-        />
+        <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
       )}
     />
   );

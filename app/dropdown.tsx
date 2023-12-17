@@ -1,11 +1,14 @@
-import { View } from 'react-native';
-import DropdownComponent from '../components/features/DropdownComponent/DropdownComponent';
+import Dropdown from '../components/ui/Dropdowns/Dropdown';
+import DropdownMenu from '../components/ui/Dropdowns/DropdownMenu';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
+import { getDropdownItems } from '../constants/DropdownLinks';
 
 export default function DropdownPage() {
+  const dropdownItems = getDropdownItems('main');
   return (
     <HeaderWrapper>
-      <DropdownComponent />
+      <Dropdown dropdownData={dropdownItems} />
+      <DropdownMenu items={''} />
     </HeaderWrapper>
   );
 }
