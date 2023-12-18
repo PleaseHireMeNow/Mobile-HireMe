@@ -3,13 +3,52 @@ import { ReactNode } from 'react';
 import { Link, router } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
+import DropdownMenu, { MenuItem } from '../Dropdowns/DropdownMenu';
 
 interface Props {
   children: ReactNode;
   disableBack?: boolean;
   dropdown?: boolean;
 }
+
+const menuItems: MenuItem[] = [
+  {
+    label: 'Home',
+    id: 'home',
+    onPress: () => router.push('/'),
+    icon: {
+      lib: 'FE',
+      icon: 'home',
+    },
+  },
+  {
+    label: 'About',
+    id: 'about',
+    onPress: () => router.push('/about'),
+    icon: {
+      lib: 'FE',
+      icon: 'info',
+    },
+  },
+  {
+    label: 'Contact',
+    id: 'contact',
+    onPress: () => router.push('/contact'),
+    icon: {
+      lib: 'MI',
+      icon: 'alternate-email',
+    },
+  },
+  {
+    label: 'Logout',
+    id: 'logout',
+    onPress: () => alert('Logout'),
+    icon: {
+      lib: 'AD',
+      icon: 'logout',
+    },
+  },
+];
 
 export default function HeaderWrapper({
   children,
@@ -39,7 +78,7 @@ export default function HeaderWrapper({
           href="/"
         >
           {dropdown ? (
-            <Entypo name="dots-three-horizontal" size={24} />
+            <DropdownMenu items={menuItems} />
           ) : (
             <Icon name="home" size={24} />
           )}
