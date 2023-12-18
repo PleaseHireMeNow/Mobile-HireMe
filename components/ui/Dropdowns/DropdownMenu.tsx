@@ -1,5 +1,12 @@
-import { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
+import { useRef, useState } from 'react';
+import {
+  View,
+  Text,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -20,9 +27,21 @@ interface DropdownMenuProps {
 
 export default function DropdownMenu({ items }: DropdownMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 });
+  const parentRef = useRef<View | null>(null);
+  const { height, width } = useWindowDimensions();
+
+  const onParentLayout = () => {
+    parentRef.current?.measureInWindow((x, y, width, height) => {
+      setMenuPosition({
+        left: width - x * 1.3,
+        top: height - y * 1.5,
+      });
+    });
+  };
 
   return (
-    <View style={styles.container}>
+    <View ref={parentRef} onLayout={onParentLayout}>
       <Pressable
         style={styles.button}
         onPress={() => setIsMenuOpen(!isMenuOpen)}
@@ -30,73 +49,50 @@ export default function DropdownMenu({ items }: DropdownMenuProps) {
         <Entypo name="dots-three-horizontal" size={24} />
       </Pressable>
       {isMenuOpen && (
-        <DropShadow
-          style={{
-            shadowColor: 'rgba(0, 0, 0, 0.5)',
-            shadowOffset: {
-              width: 0,
-              height: 8,
-            },
-            shadowOpacity: 0.1,
-            shadowRadius: 5,
-          }}
-        >
-          <DropShadow
-            style={{
-              shadowColor: 'rgba(0, 0, 0, 0.5)',
-              shadowOffset: {
-                width: 10,
-                height: 8,
-              },
-              shadowOpacity: 0.3,
-              shadowRadius: 5,
-            }}
-          >
-            <View style={styles.menu}>
-              <View style={styles.itemsContainer}>
-                {items.map((item, i) => {
-                  return (
-                    <DropShadow
-                      style={{
-                        shadowColor: 'rgba(0, 0, 0, 0.5)',
-                        shadowOffset: {
-                          width: 2,
-                          height: 2,
-                        },
-                        shadowOpacity: 0.1,
-                        shadowRadius: 5,
-                      }}
-                    >
+        <>
+          <Pressable
+            style={[
+              styles.overlay,
+              menuPosition,
+              { width: width * 1.5, height },
+            ]}
+            onPress={() => setIsMenuOpen(false)}
+          />
+          <DropShadow style={styles.innerDropShadow}>
+            <DropShadow style={styles.outerDropShadow}>
+              <View style={{ position: 'relative' }}>
+                <Animated.View style={styles.menu}>
+                  {items.map((item, i) => {
+                    return (
                       <Pressable
                         className="border-b-gray-400"
-                        style={
-                          i === items.length - 1
+                        key={item.id}
+                        style={{
+                          ...styles.item,
+                          ...(i === items.length - 1
                             ? styles.lastItem
                             : i == 0
                               ? styles.firstItem
-                              : styles.item
-                        }
-                        key={item.id}
-                        onPress={item.onPress}
+                              : styles.otherItem),
+                        }}
+                        onPress={() => alert('HELLO')}
                       >
-                        <View style={styles.itemButton}>
-                          <Text style={styles.text}>{item.label}</Text>
-                          {item.icon && (
-                            <DropdownMenuIcon
-                              lib={item.icon.lib}
-                              icon={item.icon.icon}
-                              color={'#44403C'}
-                            />
-                          )}
-                        </View>
+                        <Text style={styles.text}>{item.label}</Text>
+                        {item.icon && (
+                          <DropdownMenuIcon
+                            lib={item.icon.lib}
+                            icon={item.icon.icon}
+                            color={'#44403C'}
+                          />
+                        )}
                       </Pressable>
-                    </DropShadow>
-                  );
-                })}
+                    );
+                  })}
+                </Animated.View>
               </View>
-            </View>
+            </DropShadow>
           </DropShadow>
-        </DropShadow>
+        </>
       )}
     </View>
   );
@@ -128,27 +124,40 @@ function DropdownMenuIcon({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
+  overlay: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    top: 0,
+    left: 0,
+  },
+  innerDropShadow: {
+    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+  },
+  outerDropShadow: {
+    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    shadowOffset: {
+      width: 10,
+      height: 8,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
   },
   menu: {
     minWidth: 200,
     position: 'absolute',
+    display: 'flex',
     top: 10,
     right: -30,
     borderRadius: 16,
-    zIndex: 40,
   },
-  button: {
-    zIndex: 20,
-  },
-  itemButton: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    zIndex: 50,
-  },
+  button: {},
+  itemButton: {},
   itemsContainer: {
     display: 'flex',
   },
@@ -156,23 +165,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 10,
     backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  otherItem: {
     borderBottomWidth: 0.5,
-    marginHorizontal: 8,
   },
   firstItem: {
     borderTopRightRadius: 16,
     borderTopLeftRadius: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    backgroundColor: 'white',
-    marginHorizontal: 8,
     marginBottom: 4,
   },
   lastItem: {
-    backgroundColor: 'white',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    marginHorizontal: 8,
     borderBottomRightRadius: 16,
     borderBottomLeftRadius: 16,
     marginTop: 4,
