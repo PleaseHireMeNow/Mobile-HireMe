@@ -11,6 +11,12 @@ export default function Page() {
       <View>
       <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
+          href="/dashboard"
+        >
+          Dashboard
+        </Link>
+      <Link
+          className="text-lg font-semibold text-blue-500 rounded-lg"
           href="/dropdown"
         >
           Dropdown
