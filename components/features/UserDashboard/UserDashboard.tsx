@@ -1,43 +1,47 @@
-import { View, Text } from 'react-native';
-import SecondaryButton from '../../ui/Buttons/SecondaryButton';
+import { View } from 'react-native';
 import { router } from 'expo-router';
-import DropdownHistoryComponent from '../DropdownComponent/DropdownHistoryComponent';
+import ModalDropdown from '../../ui/DropdownComponent/ModalDropdown';
 import { useState } from 'react';
+import ProgressButton from '../../ui/Buttons/ProgressButton';
+import PreviousButton from '../../ui/Buttons/PreviousButton';
+import NewButton from '../../ui/Buttons/NewButton';
 
 export default function UserDashboardComponent() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleHistoryPress = () => {
-    setShowDropdown(!showDropdown);
+    setShowDropdown(true);
+  };
+
+  const handleCloseDropdown = () => {
+    setShowDropdown(false);
   };
 
   return (
     <View className="flex flex-row flex-wrap items-center justify-center p-24 m-10">
       <View className="flex flex-row">
         <View className="m-5">
-          <SecondaryButton
-            text="progress"
-            onPress={() => router.push('/results')}
-            // should this go to its own progress page with displayed stats or results page?
-            imageSource={require('../../../assets/images/progress.png')}
+          <PreviousButton
+            text="Previous Session"
+            onPress={() => router.push('/results')} // change path here
+            imageSource={require('../../../assets/images/previous.png')}
           />
         </View>
         <View className="m-5">
-          <SecondaryButton
-            text="other"
-            onPress={() => router.push('/other')}
-            imageSource={require('../../../assets/images/topics.png')}
+          <NewButton
+            text="New Session"
+            onPress={() => router.push('/sessionSelect')} // change path here
+            imageSource={require('../../../assets/images/new.png')}
           />
         </View>
       </View>
       <View className="flex flex-col">
-        <SecondaryButton
-          text="history"
-          // This should have the option to resume session (/history) with caching or start new session (/sessionSelect) (which also lies in settings?)
-          imageSource={require('../../../assets/images/history.png')}
+        <ProgressButton
+          text="Progress"
+          imageSource={require('../../../assets/images/progress.png')}
           onPress={handleHistoryPress}
         />
-        {showDropdown && <DropdownHistoryComponent />}
+        {showDropdown && <ModalDropdown onClose={handleCloseDropdown} />}
       </View>
     </View>
   );
