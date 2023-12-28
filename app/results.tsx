@@ -37,7 +37,7 @@ export default function ResultsPage() {
       <View className="justify-center items-center bottom-24 h-full w-[100vw]">
         <Text className="text-center shadow-sm text-8xl shadow-white">
           <Image
-            source={require('../assets/images/devdog.png')}
+            source={require('../assets/images/codedog.gif')}
             style={{ width: 250, height: 200 }}
           />
         </Text>
