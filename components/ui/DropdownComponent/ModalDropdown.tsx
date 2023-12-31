@@ -10,13 +10,7 @@ import {
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { router } from 'expo-router';
 import { ModalDropdownProps } from '../../../types/models/ModalDropdownProps';
-
-export const dropdownHistory = [
-  {
-    label: 'Insert graph or visuals here of user progress instead of a link',
-    value: { onPress: () => router.push('/sessionSelect') },
-  },
-];
+import Chart from './Chart';
 
 
 const ModalDropdown: React.FC<ModalDropdownProps> = ({ onClose }) => {
@@ -36,14 +30,7 @@ const ModalDropdown: React.FC<ModalDropdownProps> = ({ onClose }) => {
         <View style={styles.modalContainer}>
           <TouchableWithoutFeedback>
             <View style={styles.modalContent}>
-              {dropdownHistory.map((item) => (
-                <TouchableOpacity
-                  key={item.label}
-                  onPress={() => handleItemPress(item.label, item.value.onPress)}
-                >
-                  <Text style={styles.modalItem}>{item.label}</Text>
-                </TouchableOpacity>
-              ))}
+            <Chart/>
               <TouchableOpacity onPress={onClose}>
                 <Text style={styles.closeButton}>Close</Text>
               </TouchableOpacity>
