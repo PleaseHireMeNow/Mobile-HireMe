@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import DropdownComponent from '../components/features/DropdownComponent/DropdownComponent';
+import DropdownComponent from '../components/ui/DropdownComponent/DropdownComponent';
 import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 
 export default function DropdownPage() {

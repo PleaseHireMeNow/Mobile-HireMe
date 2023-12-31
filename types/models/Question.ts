@@ -1,4 +1,4 @@
-export interface AnswerContent {
+/* export interface AnswerContent {
   text: string;
 }
 
@@ -26,4 +26,29 @@ export interface Question {
 
 export interface CompletedQuestion extends Question {
   responses: Response[];
+} */
+
+export interface QuestionResponse {
+  sessionQuestionList: SessionQuestion[];
+  needMoreQuestionsFlag: boolean;
+  current_question: number;
+}
+
+export interface SessionQuestion {
+  question_id: string;
+  question_content: QuestionContent;
+}
+
+export interface QuestionContent {
+  answers: Answer[];
+  text: string;
+}
+
+export interface Answer {
+  is_correct: boolean;
+  answer_content: AnswerContent;
+}
+
+export interface AnswerContent {
+  text: string;
 }

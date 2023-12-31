@@ -2,6 +2,8 @@ import { Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import MainButton from '../components/ui/Buttons/MainButton';
 import SecondaryButton from '../components/ui/Buttons/SecondaryButton';
+import NewButton from '../components/ui/Buttons/NewButton';
+import PreviousButton from '../components/ui/Buttons/PreviousButton';
 import AuthButton from '../components/ui/Buttons/AuthButton';
 import { router } from 'expo-router';
 
@@ -9,7 +11,13 @@ export default function Page() {
   return (
     <View className="items-center justify-around flex-1">
       <View>
-      <Link
+        <Link
+          className="text-lg font-semibold text-blue-500 rounded-lg"
+          href="/dashboard"
+        >
+          Dashboard
+        </Link>
+        <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"
           href="/dropdown"
         >
@@ -56,7 +64,15 @@ export default function Page() {
           </Text>
         </Link>
       </View>
-      <SecondaryButton
+      <NewButton
+        text="signup test"
+        onPress={() => router.push('/signup')}
+      />
+      <PreviousButton
+        text="login test"
+        onPress={() => router.push('/login')}
+      />
+       <SecondaryButton
         text="start user flow"
         onPress={() => router.push('/signup')}
       />

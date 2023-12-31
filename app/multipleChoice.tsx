@@ -126,11 +126,11 @@ const MultipleChoice = () => {
             </Text>
             {'\n'}
             <Text className="text-base">
-              {currentQuestion['question-content'].text}?
+              {currentQuestion.question_content.text}?
             </Text>
           </Text>
           <View className="absolute bottom-20">
-            {currentQuestion['question-content'].answers.map((answer, i) => {
+            {currentQuestion.question_content.answers.map((answer, i) => {
               const answerLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G'][i];
               return (
                 <Pressable
@@ -142,12 +142,12 @@ const MultipleChoice = () => {
                   }}
                   className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
                   onPress={() =>
-                    handleSelectAnswer(answerLetter, answer['is-correct'])
+                    handleSelectAnswer(answerLetter, answer.is_correct)
                   }
                 >
                   <Text>
                     <Text className="font-bold">{answerLetter}: </Text>
-                    <Text>{answer['answer-content'].text}</Text>
+                    <Text>{answer.answer_content.text}</Text>
                   </Text>
                 </Pressable>
               );
@@ -171,9 +171,9 @@ const MultipleChoice = () => {
           <View className="p-4">
             <Text className="text-lg">
               {
-                currentQuestion['question-content'].answers.filter(
-                  (q) => q['is-correct']
-                )[0]['answer-content'].text
+                currentQuestion.question_content.answers.filter(
+                  (q) => q.is_correct
+                )[0].answer_content.text
               }
             </Text>
           </View>

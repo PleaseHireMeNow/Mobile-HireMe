@@ -13,26 +13,25 @@ axios.defaults.baseURL = inDev
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 // intercept the response only used for unhappy path
-axios.interceptors.response.use(
-  (response) => response,
-  (e: AxiosError) => {
-    const { data, status } = e.response as AxiosResponse;
-    switch (status) {
-      case 400:
-        if (data.error) {
-          // if we have data about error console it
-          console.error(data.error);
-          throw data.error;
-        } else {
-          throw new Error('Bad Request');
-        }
-      case 401:
-        throw new Error('Unauthorized');
-    }
-
-    return Promise.reject(data.error);
-  }
-);
+// axios.interceptors.response.use(
+//   (response) => response,
+//   (e: AxiosError) => {
+//     const { data, status } = e.response as AxiosResponse;
+//     switch (status) {
+//       case 400:
+//         if (data.error) {
+//           // if we have data about error console it
+//           console.error(data.error);
+//           throw data.error;
+//         } else {
+//           throw new Error('Bad Request');
+//         }
+//       case 401:
+//         throw new Error('Unauthorized');
+//     }
+//     return Promise.reject(data.error);
+//   }
+// );
 
 // requests obj
 export const requests = {

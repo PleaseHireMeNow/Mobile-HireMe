@@ -29,20 +29,21 @@ export default function SessionSelectPage() {
   const onSubmit = async () => {
     if (!selectedTopic || !selectedDifficulty) return;
 
-    await agent.StackSelect.create('string1', {
-      stack: selectedTopic,
-      difficulty: selectedDifficulty,
-    });
+    /* try {
+      await agent.StackSelect.create('string1', {
+        stack: selectedTopic,
+        difficulty: selectedDifficulty,
+      });
+    } catch (error) {
+      console.log(error);
+    } */
 
-    const questions = await agent.Questions.get('string1');
+    const questions = await agent.Questions.get('spetersen');
     // reset form
     setSelectedDifficulty(null);
     setSelectedTopic('');
-    // console.log(
-    //   questions.forEach((q) => console.log(q['question-content'].answers))
-    // );
     // TODO: remove the slice when we are done developing
-    setQuestions(questions.slice(0, 3));
+    setQuestions(questions.sessionQuestionList);
     router.push('/multipleChoice');
   };
 
