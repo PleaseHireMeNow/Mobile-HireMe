@@ -23,14 +23,14 @@ export default function UserDashboardComponent() {
         <View className="m-5">
           <PreviousButton
             text="Previous Session"
-            onPress={() => router.push('/results')} // change path here
+            onPress={() => router.push('/results')} 
             imageSource={require('../../../assets/images/previous.png')}
           />
         </View>
         <View className="m-5">
           <NewButton
             text="New Session"
-            onPress={() => router.push('/sessionSelect')} // change path here
+            onPress={() => router.push('/settings')} 
             imageSource={require('../../../assets/images/new.png')}
           />
         </View>
