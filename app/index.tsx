@@ -58,6 +58,11 @@ export default function Page() {
             Session Select
           </Text>
         </Link>
+        <Link href="/settings">
+          <Text className="text-lg font-semibold text-blue-500 rounded-lg">
+            Settings
+          </Text>
+        </Link>
       </View>
       <NewButton
         text="signup test"
