@@ -1,4 +1,4 @@
-import { useContext, type Dispatch, type SetStateAction } from 'react';
+import { useContext } from 'react';
 import { DevIcon } from '../../../constants/DevIcons';
 import { View, Text, Pressable } from 'react-native';
 import TopicIcon from './TopicIcon';

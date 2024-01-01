@@ -44,6 +44,7 @@ export default function SessionSelectPage() {
     setSelectedTopic('');
     // TODO: remove the slice when we are done developing
     setQuestions(questions.questions);
+    console.log(questions.questions);
     router.push('/multipleChoice');
   };
 

@@ -5,7 +5,7 @@ import {
   useState,
   PropsWithChildren,
 } from 'react';
-import { SessionQuestion } from '../types/models/Question';
+import { QuestionObject } from '../types/models/Question';
 
 export type Score = { correct: number; incorrect: number };
 
@@ -13,8 +13,8 @@ export type Score = { correct: number; incorrect: number };
  * Interface for typescript
  */
 export interface ICurrentSessionContext {
-  questions: SessionQuestion[] | null;
-  setQuestions: Dispatch<SetStateAction<SessionQuestion[] | null>>;
+  questions: QuestionObject[] | null;
+  setQuestions: Dispatch<SetStateAction<QuestionObject[] | null>>;
   currentQuestionIndex: number;
   setCurrentQuestionIndex: Dispatch<SetStateAction<number>>;
   currentScore: Score;
@@ -39,7 +39,7 @@ export const CurrentSessionContext = createContext<ICurrentSessionContext>({
 export const CurrentSessionContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
-  const [questions, setQuestions] = useState<SessionQuestion[] | null>(null);
+  const [questions, setQuestions] = useState<QuestionObject[] | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [currentScore, setCurrentScore] = useState({
     correct: 0,
