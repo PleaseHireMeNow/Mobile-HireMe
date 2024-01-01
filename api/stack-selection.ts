@@ -1,8 +1,6 @@
 import { Difficulty } from '../context/SessionFormContext';
 import { requests } from './base';
 
-// /stackSelection
-
 export interface StackSelection {
   stack: string;
   difficulty: Difficulty;

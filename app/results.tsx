@@ -59,7 +59,7 @@ export default function ResultsPage() {
           </View>
         </View>
         <View className="items-center top-24">
-          <MainButton text="Continue" onPress={() => router.push('/')} />
+          <MainButton text="Continue" onPress={() => router.push('/dashboard')} />
         </View>
       </View>
     </HeaderWrapper>

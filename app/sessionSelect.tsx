@@ -38,12 +38,13 @@ export default function SessionSelectPage() {
       console.log(error);
     } */
 
-    const questions = await agent.Questions.get('spetersen');
+    const questions = await agent.Questions.new('spetersen');
     // reset form
     setSelectedDifficulty(null);
     setSelectedTopic('');
     // TODO: remove the slice when we are done developing
-    setQuestions(questions.sessionQuestionList);
+    setQuestions(questions.questions);
+    console.log(questions.questions);
     router.push('/multipleChoice');
   };
 
@@ -59,7 +60,7 @@ export default function SessionSelectPage() {
           </View>
           <TopicList />
         </View>
-        <View className="mb-4">
+        <View className="mb-2">
           <DifficultySelect />
         </View>
         <WideButton

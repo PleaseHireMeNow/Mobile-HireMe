@@ -1,4 +1,4 @@
-import { Answer, CompletedQuestion, Question } from './Question';
+// import { Answer, CompletedQuestion, Question } from './Question';
 import { Stack } from './Stack';
 
 export interface User {
@@ -7,6 +7,4 @@ export interface User {
   username: string;
   stack: Stack[];
   isGuest: boolean;
-  history: CompletedQuestion[];
-  userAnswer: CompletedQuestion;
 }

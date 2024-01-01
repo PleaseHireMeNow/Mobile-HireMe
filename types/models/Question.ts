@@ -1,42 +1,24 @@
-/* export interface AnswerContent {
-  text: string;
+export interface QuestionResponse {
+  current_question: number;
+  answered_correctly: number;
+  timestamp: Timestamp;
+  questions: QuestionObject[];
+  topic_selection: TopicSelection;
+  session_id: string;
 }
 
-export interface Answer {
-  'answer-content': AnswerContent;
-  'is-correct': boolean;
+export interface Timestamp {
+  seconds: number;
+  nanoseconds: number;
 }
 
-export interface Response {
-  responseContent: {
-    text: string;
-  };
-  isCorrect: boolean;
-}
-
-export interface QuestionContent {
-  text: string;
-  answers: Answer[];
+export interface QuestionObject {
+  question: Question;
 }
 
 export interface Question {
-  'question-id': string;
-  'question-content': QuestionContent;
-}
-
-export interface CompletedQuestion extends Question {
-  responses: Response[];
-} */
-
-export interface QuestionResponse {
-  sessionQuestionList: SessionQuestion[];
-  needMoreQuestionsFlag: boolean;
-  current_question: number;
-}
-
-export interface SessionQuestion {
-  question_id: string;
   question_content: QuestionContent;
+  question_id: string;
 }
 
 export interface QuestionContent {
@@ -51,4 +33,19 @@ export interface Answer {
 
 export interface AnswerContent {
   text: string;
+}
+
+export interface TopicSelection {
+  topic: Topic;
+  difficulty: Difficulty;
+}
+
+export interface Topic {
+  iconPath: string;
+  name: string;
+}
+
+export interface Difficulty {
+  name: string;
+  iconPath: string;
 }

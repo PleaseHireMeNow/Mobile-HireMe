@@ -126,32 +126,34 @@ const MultipleChoice = () => {
             </Text>
             {'\n'}
             <Text className="text-base">
-              {currentQuestion.question_content.text}?
+              {currentQuestion.question.question_content.text}?
             </Text>
           </Text>
           <View className="absolute bottom-20">
-            {currentQuestion.question_content.answers.map((answer, i) => {
-              const answerLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G'][i];
-              return (
-                <Pressable
-                  key={i}
-                  style={{
-                    ...styles.pressable,
-                    backgroundColor:
-                      backgroundColor[answerLetter as AnswerLetter],
-                  }}
-                  className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
-                  onPress={() =>
-                    handleSelectAnswer(answerLetter, answer.is_correct)
-                  }
-                >
-                  <Text>
-                    <Text className="font-bold">{answerLetter}: </Text>
-                    <Text>{answer.answer_content.text}</Text>
-                  </Text>
-                </Pressable>
-              );
-            })}
+            {currentQuestion.question.question_content.answers.map(
+              (answer, i) => {
+                const answerLetter = ['A', 'B', 'C', 'D', 'E', 'F', 'G'][i];
+                return (
+                  <Pressable
+                    key={i}
+                    style={{
+                      ...styles.pressable,
+                      backgroundColor:
+                        backgroundColor[answerLetter as AnswerLetter],
+                    }}
+                    className="max-w-[80vw] w-[75vw] p-2 my-2 rounded-lg active:border-black border-solid border-gray-500/50 border-[1px] active:border-[2px] shadow-sm shadow-indigo-500/40"
+                    onPress={() =>
+                      handleSelectAnswer(answerLetter, answer.is_correct)
+                    }
+                  >
+                    <Text>
+                      <Text className="font-bold">{answerLetter}: </Text>
+                      <Text>{answer.answer_content.text}</Text>
+                    </Text>
+                  </Pressable>
+                );
+              }
+            )}
           </View>
           <MainButton text="Submit" onPress={handleSubmit} />
         </View>
@@ -171,7 +173,7 @@ const MultipleChoice = () => {
           <View className="p-4">
             <Text className="text-lg">
               {
-                currentQuestion.question_content.answers.filter(
+                currentQuestion.question.question_content.answers.filter(
                   (q) => q.is_correct
                 )[0].answer_content.text
               }
