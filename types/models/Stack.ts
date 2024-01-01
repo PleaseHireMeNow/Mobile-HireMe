@@ -9,6 +9,8 @@ export interface Stack {
 }
 
 export interface Difficulty {
-  name: 'entry-level' | 'mid-level' | 'expert-level';
+  name: DifficultyTypes;
   iconPath: string;
 }
+
+export type DifficultyTypes = 'entry-level' | 'mid-level' | 'expert-level';

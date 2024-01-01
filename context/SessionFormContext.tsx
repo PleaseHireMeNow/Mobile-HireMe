@@ -5,8 +5,7 @@ import {
   useState,
   PropsWithChildren,
 } from 'react';
-
-export type Difficulty = 'Easy' | 'Med' | 'Hard' | 'Pro';
+import { DifficultyTypes } from '../types/models/Stack';
 
 /*
  * Interface for typescript
@@ -14,8 +13,8 @@ export type Difficulty = 'Easy' | 'Med' | 'Hard' | 'Pro';
 export interface ISessionFormContext {
   selectedTopic: string;
   setSelectedTopic: Dispatch<SetStateAction<string>>;
-  selectedDifficulty: Difficulty | null;
-  setSelectedDifficulty: Dispatch<SetStateAction<Difficulty | null>>;
+  selectedDifficulty: DifficultyTypes | null;
+  setSelectedDifficulty: Dispatch<SetStateAction<DifficultyTypes | null>>;
 }
 
 /*
@@ -23,9 +22,9 @@ export interface ISessionFormContext {
  */
 export const SessionFormContext = createContext<ISessionFormContext>({
   selectedTopic: '',
-  setSelectedTopic: () => { },
+  setSelectedTopic: () => {},
   selectedDifficulty: null,
-  setSelectedDifficulty: () => { },
+  setSelectedDifficulty: () => {},
 });
 
 /*
@@ -36,7 +35,7 @@ export const SessionFormContextProvider: React.FC<PropsWithChildren> = ({
 }) => {
   const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [selectedDifficulty, setSelectedDifficulty] =
-    useState<Difficulty | null>(null);
+    useState<DifficultyTypes | null>(null);
 
   return (
     <SessionFormContext.Provider
