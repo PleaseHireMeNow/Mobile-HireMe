@@ -40,16 +40,16 @@ const Settings = () => {
           <Pressable>
             <Link href="/sessionSelect">
               <Text className="text-xl underline active:font-bold">
-                Start New Session?
+                Start Over?
               </Text>
             </Link>
           </Pressable>
         </View>
         <View className="items-center m-4 ">
           <Pressable>
-            <Link href="/">
+            <Link href="/logout">
               <Text className="text-xl underline active:font-bold">
-                Log out
+                Log Out
               </Text>
             </Link>
           </Pressable>

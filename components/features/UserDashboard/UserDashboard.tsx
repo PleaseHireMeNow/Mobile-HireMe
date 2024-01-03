@@ -30,14 +30,14 @@ export default function UserDashboardComponent() {
         <View className="m-5">
           <NewButton
             text="New Session"
-            onPress={() => router.push('/settings')} 
+            onPress={() => router.push('/multipleChoice')} 
             imageSource={require('../../../assets/images/new.png')}
           />
         </View>
       </View>
       <View className="flex flex-col">
         <ProgressButton
-          text="Progress"
+          text="History"
           imageSource={require('../../../assets/images/progress.png')}
           onPress={handleHistoryPress}
         />

@@ -4,6 +4,7 @@ import { Link, router } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import DropdownComponent from '../DropdownComponent/DropdownComponent';
 
 interface Props {
   children: ReactNode;
@@ -34,16 +35,15 @@ export default function HeaderWrapper({
             color={`${canGoBack ? '#1C1917' : '#ffdd43'}`}
           />
         </Pressable>
-        <Link
+        {/* <Link
           className="mr-4 text-lg font-semibold text-black active:text-blue-500"
           href="/"
-        >
-          {dropdown ? (
-            <Entypo name="dots-three-horizontal" size={24} />
-          ) : (
-            <Icon name="home" size={24} />
-          )}
-        </Link>
+        > */}
+         
+             {/* <Entypo name="dots-three-horizontal" size={24} /> */}
+            <DropdownComponent/>
+          
+        {/* </Link> */}
       </View>
       {/* Wrapper  */}
       <View className="flex items-center w-full h-full px-8 shadow-sm bg-sunglow-300 shadow-gray-400">

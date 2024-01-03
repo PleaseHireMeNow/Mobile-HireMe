@@ -11,25 +11,8 @@ import HeaderWrapper from '../components/ui/Navigation/HeaderWrapper';
 export default function Page() {
   return (
     <HeaderWrapper>
-    <View className="items-center flex-1 my-10 "> 
-      <Link
-          className="my-2 text-lg font-semibold rounded-lg text-sunglow-950"
-          href="/dashboard"
-        >
-          Dashboard
-        </Link>
-        <Link
-          className="my-2 text-lg font-semibold rounded-lg text-sunglow-950"
-          href="/signup"
-        >
-          Sign Up
-        </Link>
-        <Link
-          className="pb-5 my-2 text-lg font-semibold rounded-lg text-sunglow-950"
-          href="/login"
-        >
-          Log in
-        </Link>
+    <View className="items-center flex-1 my-24 "> 
+  
       {/* <View>
         <Link
           className="text-lg font-semibold text-blue-500 rounded-lg"

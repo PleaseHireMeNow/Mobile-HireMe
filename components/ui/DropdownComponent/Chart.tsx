@@ -17,15 +17,10 @@ const chartConfig = {
 };
 
 const data = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  labels: ['Javascript, Medium'],
   legend: ['Correct', 'Incorrect'],
   data: [
-    [60, 40],
-    [0, 0],
-    [0, 0],
-    [0, 0],
-    [0, 0],
-    [0, 0],
+    [1, 2],
     [0, 0],
   ],
   barColors: ['#86D5E5', '#FFDE42'],
